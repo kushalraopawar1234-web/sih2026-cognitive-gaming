@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meghalaya Mornings — Memory Village</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bamboo:    #4A7C59;
+    --earth:     #8B5E3C;
+    --mustard:   #D4A017;
+    --river:     #3A7CA5;
+    --dawn:      #F5E6C8;
+    --smoke:     #2B2520;
+    --leaf:      #6BAA75;
+    --festival:  #C0392B;
+    --fog:       #EAE0D0;
+    --deep:      #1A1410;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--smoke);
+    color: var(--dawn);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── VILLAGE SCENE ─── */
+  #scene {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #2C4A6E 0%, #5B7FA6 45%, #8FAF7E 45%, #5C7A4E 100%);
+  }
+
+  /* Sky & Clouds */
+  .cloud {
+    position: absolute;
+    background: rgba(255,255,255,0.18);
+    border-radius: 50px;
+    filter: blur(6px);
+    animation: drift linear infinite;
+  }
+  .cloud1 { width:120px; height:30px; top:18%; left:-10%; animation-duration:28s; }
+  .cloud2 { width:80px;  height:20px; top:28%; left:-8%; animation-duration:38s; animation-delay:-12s; }
+  .cloud3 { width:150px; height:35px; top:12%; left:-12%; animation-duration:44s; animation-delay:-20s; }
+  @keyframes drift { to { left: 115%; } }
+
+  /* Mountains */
+  .mountains {
+    position: absolute;
+    bottom: 55%;
+    left: 0; right: 0;
+    height: 120px;
+    background: linear-gradient(180deg, transparent 0%, #3A5A3A 100%);
+    clip-path: polygon(0% 100%, 8% 30%, 18% 65%, 28% 15%, 40% 60%, 52% 25%, 62% 55%, 75% 10%, 85% 50%, 100% 20%, 100% 100%);
+    opacity: 0.55;
+  }
+
+  /* Ground layer */
+  .ground {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 55%;
+    background: linear-gradient(180deg, #5C7A4E 0%, #3D5230 100%);
+  }
+
+  /* River */
+  .river {
+    position: absolute;
+    bottom: 28%;
+    left: 0; right: 0;
+    height: 18px;
+    background: linear-gradient(90deg, transparent, var(--river) 20%, #5BA8D4 50%, var(--river) 80%, transparent);
+    opacity: 0.7;
+    animation: flow 3s ease-in-out infinite;
+  }
+  @keyframes flow {
+    0%,100% { opacity: 0.7; }
+    50%      { opacity: 0.9; }
+  }
+
+  /* Village buildings as CSS art */
+  .village-art {
+    position: absolute;
+    bottom: 28%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  .hut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+  }
+  .hut:hover { transform: translateY(-4px) scale(1.06); }
+
+  .hut-roof {
+    width: 0; height: 0;
+    border-left: solid transparent;
+    border-right: solid transparent;
+    border-bottom: solid var(--earth);
+  }
+  .hut-body {
+    background: var(--earth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hut-door {
+    width: 8px; height: 14px;
+    background: var(--deep);
+    border-radius: 4px 4px 0 0;
+    margin-top: auto;
+  }
+
+  .hut.small  .hut-roof  { border-left-width:22px; border-right-width:22px; border-bottom-width:28px; }
+  .hut.small  .hut-body  { width:44px; height:28px; }
+  .hut.medium .hut-roof  { border-left-width:32px; border-right-width:32px; border-bottom-width:36px; border-bottom-color: #6B3A1E; }
+  .hut.medium .hut-body  { width:64px; height:38px; }
+  .hut.large  .hut-roof  { border-left-width:42px; border-right-width:42px; border-bottom-width:48px; border-bottom-color: #7A4020; }
+  .hut.large  .hut-body  { width:84px; height:50px; }
+
+  .hut.temple .hut-roof  {
+    border-left-width:50px; border-right-width:50px; border-bottom-width:60px;
+    border-bottom-color: #8B2500;
+    position: relative;
+  }
+  .hut.temple .hut-body  { width:100px; height:44px; background: #6B3A20; }
+
+  /* Bamboo trees */
+  .bamboo-grove {
+    position: absolute;
+    bottom: 28%;
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+  }
+  .bamboo-stick {
+    width: 5px;
+    background: linear-gradient(180deg, var(--leaf), var(--bamboo));
+    border-radius: 3px;
+    position: relative;
+  }
+  .bamboo-stick::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: -8px;
+    width: 20px; height: 8px;
+    background: var(--leaf);
+    border-radius: 50%;
+    opacity: 0.8;
+  }
+
+  /* Fireflies */
+  .firefly {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: #FFD700;
+    border-radius: 50%;
+    animation: float-fly linear infinite;
+    box-shadow: 0 0 6px 2px rgba(255,215,0,0.6);
+  }
+  @keyframes float-fly {
+    0%   { transform: translate(0,0); opacity: 0; }
+    20%  { opacity: 1; }
+    80%  { opacity: 0.8; }
+    100% { transform: translate(var(--tx), var(--ty)); opacity: 0; }
+  }
+
+  /* ─── HUD ─── */
+  #hud {
+    position: absolute;
+    top: 12px; left: 12px; right: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    pointer-events: none;
+  }
+  .hud-left { display: flex; flex-direction: column; gap: 6px; }
+  .hud-badge {
+    background: rgba(26,20,16,0.75);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(212,160,23,0.3);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--mustard);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hud-badge .icon { font-size: 14px; }
+
+  .hud-right {
+    background: rgba(26,20,16,0.75);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(107,170,117,0.3);
+    border-radius: 12px;
+    padding: 8px 14px;
+    text-align: right;
+  }
+  .hud-right .score-val {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 24px;
+    color: var(--leaf);
+    line-height: 1;
+  }
+  .hud-right .score-label { font-size: 10px; color: rgba(245,230,200,0.6); margin-top: 2px; }
+
+  /* ─── MAIN LAYOUT ─── */
+  #shell {
+    display: grid;
+    grid-template-rows: 340px auto;
+    min-height: 100vh;
+  }
+
+  #panel {
+    background: var(--deep);
+    padding: 0 0 40px;
+  }
+
+  /* ─── DAILY TASK STRIP ─── */
+  #daily-strip {
+    background: linear-gradient(135deg, #2B2016 0%, #1A1410 100%);
+    border-top: 2px solid var(--mustard);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    overflow-x: auto;
+  }
+  .strip-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--mustard);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .task-chip {
+    background: rgba(74,124,89,0.2);
+    border: 1.5px solid rgba(74,124,89,0.5);
+    border-radius: 24px;
+    padding: 8px 16px;
+    font-size: 13px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .task-chip:hover, .task-chip.active {
+    background: var(--bamboo);
+    border-color: var(--leaf);
+    transform: translateY(-2px);
+  }
+  .task-chip.completed {
+    background: rgba(107,170,117,0.15);
+    border-color: var(--leaf);
+    color: var(--leaf);
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  /* ─── CONTENT AREA ─── */
+  #content { padding: 24px 20px 90px; }
+
+  .section-header {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 22px;
+    color: var(--dawn);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .section-sub {
+    font-size: 13px;
+    color: rgba(245,230,200,0.55);
+    margin-bottom: 20px;
+  }
+
+  /* ─── GAME CARDS ─── */
+  .game-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .game-card {
+    background: linear-gradient(135deg, #2B2016, #1A1410);
+    border: 1.5px solid rgba(245,230,200,0.1);
+    border-radius: 16px;
+    padding: 18px 14px;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .game-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--card-accent, var(--bamboo));
+    opacity: 0.07;
+    border-radius: inherit;
+  }
+  .game-card:hover {
+    border-color: var(--card-accent, var(--bamboo));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .game-card:hover::before { opacity: 0.14; }
+
+  .card-emoji { font-size: 32px; margin-bottom: 10px; display: block; }
+  .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dawn);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .card-desc {
+    font-size: 11px;
+    color: rgba(245,230,200,0.5);
+    line-height: 1.4;
+  }
+  .card-xp {
+    position: absolute;
+    top: 12px; right: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--mustard);
+    background: rgba(212,160,23,0.15);
+    border-radius: 10px;
+    padding: 3px 8px;
+  }
+
+  /* ─── ACTIVE GAME PANEL ─── */
+  #game-panel {
+    background: linear-gradient(135deg, #2B2016, #1A1410);
+    border: 1.5px solid rgba(212,160,23,0.25);
+    border-radius: 20px;
+    padding: 24px 20px;
+    margin-bottom: 24px;
+    display: none;
+  }
+  #game-panel.active { display: block; animation: slide-in 0.3s ease; }
+  @keyframes slide-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .game-title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .game-title-bar h2 {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 18px;
+    color: var(--mustard);
+  }
+  .close-btn {
+    width: 32px; height: 32px;
+    background: rgba(245,230,200,0.1);
+    border: none;
+    border-radius: 50%;
+    color: var(--dawn);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .close-btn:hover { background: rgba(192,57,43,0.4); }
+
+  /* Memory Match Game */
+  #match-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .match-card {
+    aspect-ratio: 1;
+    background: rgba(74,124,89,0.2);
+    border: 2px solid rgba(74,124,89,0.4);
+    border-radius: 12px;
+    font-size: 28px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .match-card:hover { border-color: var(--leaf); background: rgba(74,124,89,0.35); }
+  .match-card.flipped {
+    background: rgba(139,94,60,0.3);
+    border-color: var(--earth);
+    transform: rotateY(0deg);
+  }
+  .match-card.matched {
+    background: rgba(107,170,117,0.25);
+    border-color: var(--leaf);
+    animation: pulse-match 0.4s ease;
+  }
+  .match-card.hidden-face::before {
+    content: '🌿';
+    font-size: 20px;
+  }
+  @keyframes pulse-match {
+    0%,100% { transform: scale(1); }
+    50%      { transform: scale(1.1); }
+  }
+
+  /* Festival Arrangement */
+  #festival-zone {
+    min-height: 180px;
+    background: rgba(26,20,16,0.6);
+    border: 2px dashed rgba(212,160,23,0.3);
+    border-radius: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s;
+  }
+  #festival-zone.drag-over { border-color: var(--mustard); background: rgba(212,160,23,0.08); }
+  .festival-item {
+    font-size: 36px;
+    cursor: grab;
+    padding: 8px;
+    background: rgba(74,124,89,0.2);
+    border-radius: 12px;
+    border: 1.5px solid rgba(74,124,89,0.4);
+    transition: all 0.2s;
+    user-select: none;
+    -webkit-user-drag: element;
+  }
+  .festival-item:hover { transform: scale(1.15); border-color: var(--leaf); }
+  .festival-item.placed { opacity: 0.5; cursor: default; }
+
+  .item-shelf {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  /* Story prompt */
+  #story-area {
+    background: rgba(26,20,16,0.8);
+    border-left: 3px solid var(--river);
+    border-radius: 0 12px 12px 0;
+    padding: 16px 18px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(245,230,200,0.85);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .story-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .story-choice {
+    background: rgba(58,124,165,0.15);
+    border: 1.5px solid rgba(58,124,165,0.35);
+    border-radius: 12px;
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--dawn);
+    transition: all 0.2s;
+    text-align: left;
+  }
+  .story-choice:hover {
+    background: rgba(58,124,165,0.3);
+    border-color: var(--river);
+    transform: translateX(4px);
+  }
+  .story-choice.correct { background: rgba(107,170,117,0.25); border-color: var(--leaf); color: var(--leaf); }
+  .story-choice.wrong   { background: rgba(192,57,43,0.15); border-color: var(--festival); }
+
+  /* Village Builder */
+  #builder-area {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .build-slot {
+    aspect-ratio: 1;
+    background: rgba(26,20,16,0.6);
+    border: 2px dashed rgba(245,230,200,0.15);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .build-slot:hover { border-color: var(--mustard); background: rgba(212,160,23,0.08); }
+  .build-slot.filled { border-style: solid; border-color: rgba(74,124,89,0.5); }
+
+  .build-palette {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .build-item {
+    font-size: 28px;
+    padding: 8px;
+    background: rgba(74,124,89,0.15);
+    border: 1.5px solid rgba(74,124,89,0.3);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .build-item.selected-tool {
+    background: rgba(74,124,89,0.4);
+    border-color: var(--leaf);
+    transform: scale(1.1);
+  }
+
+  /* ─── PROGRESS BAR ─── */
+  .progress-wrap { margin-bottom: 16px; }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(245,230,200,0.5);
+    margin-bottom: 6px;
+  }
+  .progress-track {
+    height: 6px;
+    background: rgba(245,230,200,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--bamboo), var(--leaf));
+    transition: width 0.5s ease;
+  }
+
+  /* ─── BOTTOM NAV ─── */
+  #bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(26,20,16,0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(212,160,23,0.2);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0 14px;
+    z-index: 100;
+  }
+  .nav-btn {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 4px; cursor: pointer; border: none; background: none;
+    color: rgba(245,230,200,0.4);
+    font-size: 22px;
+    transition: color 0.2s;
+    padding: 4px 16px;
+  }
+  .nav-btn.active { color: var(--mustard); }
+  .nav-btn span { font-size: 10px; font-family: 'DM Sans', sans-serif; }
+
+  /* ─── TOAST ─── */
+  #toast {
+    position: fixed;
+    top: 20px; left: 50%; transform: translateX(-50%) translateY(-80px);
+    background: var(--bamboo);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 999;
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  #toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ─── COGNITIVE METRICS ─── */
+  #metrics-panel {
+    display: none;
+    padding: 24px 20px 90px;
+  }
+  #metrics-panel.active { display: block; }
+
+  .metric-card {
+    background: linear-gradient(135deg, #2B2016, #1A1410);
+    border: 1.5px solid rgba(245,230,200,0.1);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 12px;
+  }
+  .metric-title {
+    font-size: 12px;
+    color: rgba(245,230,200,0.5);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .metric-val {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 32px;
+    color: var(--leaf);
+    line-height: 1;
+  }
+  .metric-trend {
+    font-size: 12px;
+    color: var(--leaf);
+    margin-top: 4px;
+  }
+
+  .sparkline { margin-top: 10px; }
+
+  /* ─── VILLAGE VIEW ─── */
+  #village-panel { display: none; padding: 24px 20px 90px; }
+  #village-panel.active { display: block; }
+
+  .upgrade-card {
+    background: linear-gradient(135deg, #2B2016, #1A1410);
+    border: 1.5px solid rgba(212,160,23,0.2);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .upgrade-card:hover { border-color: var(--mustard); transform: translateX(4px); }
+  .upgrade-card .emoji { font-size: 36px; flex-shrink: 0; }
+  .upgrade-card .info { flex: 1; }
+  .upgrade-card .name { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+  .upgrade-card .detail { font-size: 12px; color: rgba(245,230,200,0.5); }
+  .upgrade-card .cost {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--mustard);
+    white-space: nowrap;
+  }
+  .upgrade-card.bought .emoji { filter: grayscale(0.5); }
+  .upgrade-card.bought .cost { color: var(--leaf); }
+
+  /* scrollpad for content above fixed nav */
+  .scroll-pad { height: 80px; }
+
+  /* Latency bar */
+  #latency-indicator {
+    position: fixed;
+    bottom: 74px; right: 16px;
+    font-size: 10px;
+    color: rgba(245,230,200,0.3);
+    background: rgba(26,20,16,0.8);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div id="shell">
+  <!-- ── SCENE ── -->
+  <div id="scene">
+    <!-- Sky elements -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    <div class="mountains"></div>
+    <div class="ground"></div>
+    <div class="river"></div>
+
+    <!-- Village art -->
+    <div class="village-art" id="villageArt">
+      <div class="hut small" title="Your Hut" onclick="toast('🏠 Your home — built with love')">
+        <div class="hut-roof"></div>
+        <div class="hut-body"><div class="hut-door"></div></div>
+      </div>
+      <div class="hut medium" title="Weaver's Workshop" onclick="toast('🧵 The weaver\'s workshop — smell the turmeric dye')">
+        <div class="hut-roof"></div>
+        <div class="hut-body"><div class="hut-door"></div></div>
+      </div>
+      <div class="hut large temple" title="Community Hall" id="communityHall" onclick="toast('🪘 The community hall — Bihu beats echo here')">
+        <div class="hut-roof"></div>
+        <div class="hut-body"><div class="hut-door" style="width:12px;height:20px"></div></div>
+      </div>
+      <div class="hut medium" title="Market" onclick="toast('🛖 The morning market — can you name everything sold here?')">
+        <div class="hut-roof"></div>
+        <div class="hut-body"><div class="hut-door"></div></div>
+      </div>
+      <div class="hut small" title="Elder's House" onclick="toast('🌺 Dadi\'s house — she knows all the old songs')">
+        <div class="hut-roof"></div>
+        <div class="hut-body"><div class="hut-door"></div></div>
+      </div>
+    </div>
+
+    <!-- Bamboo groves -->
+    <div class="bamboo-grove" style="left:5%;bottom:28%">
+      <div class="bamboo-stick" style="height:70px"></div>
+      <div class="bamboo-stick" style="height:90px"></div>
+      <div class="bamboo-stick" style="height:60px"></div>
+    </div>
+    <div class="bamboo-grove" style="right:8%;bottom:28%">
+      <div class="bamboo-stick" style="height:80px"></div>
+      <div class="bamboo-stick" style="height:55px"></div>
+      <div class="bamboo-stick" style="height:75px"></div>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud">
+      <div class="hud-left">
+        <div class="hud-badge"><span class="icon">⭐</span> Day <span id="dayCount">14</span></div>
+        <div class="hud-badge"><span class="icon">🌾</span> <span id="resourceCount">240</span> Grains</div>
+      </div>
+      <div class="hud-right">
+        <div class="score-val" id="scoreVal">82</div>
+        <div class="score-label">Memory Score</div>
+      </div>
+    </div>
+
+    <!-- Fireflies (JS will add) -->
+  </div>
+
+  <!-- ── PANEL ── -->
+  <div id="panel">
+    <!-- Daily tasks strip -->
+    <div id="daily-strip">
+      <div class="strip-label">Today's Tasks</div>
+      <div class="task-chip active" onclick="selectTask(this,'match')">🃏 Match Festival Items</div>
+      <div class="task-chip" onclick="selectTask(this,'story')">📖 Morning Story</div>
+      <div class="task-chip" onclick="selectTask(this,'arrange')">🏮 Arrange the Puja</div>
+      <div class="task-chip" onclick="selectTask(this,'build')">🏗️ Build the Market</div>
+    </div>
+
+    <!-- PLAY TAB -->
+    <div id="play-tab">
+      <div id="content">
+        <div class="section-header">Good morning, Kaki 🌅</div>
+        <div class="section-sub">Your village missed you. Three tasks await today.</div>
+
+        <!-- Active game panel -->
+        <div id="game-panel">
+          <!-- Memory Match -->
+          <div id="match-game" style="display:none">
+            <div class="game-title-bar">
+              <h2>🃏 Festival Memory Match</h2>
+              <button class="close-btn" onclick="closeGame()">✕</button>
+            </div>
+            <div class="progress-wrap">
+              <div class="progress-label"><span>Matches found</span><span id="matchCount">0 / 6</span></div>
+              <div class="progress-track"><div class="progress-fill" id="matchProgress" style="width:0%"></div></div>
+            </div>
+            <div id="match-grid"></div>
+            <div style="font-size:12px;color:rgba(245,230,200,0.45);text-align:center">Tap two cards to find matching festival symbols</div>
+          </div>
+
+          <!-- Story Mode -->
+          <div id="story-game" style="display:none">
+            <div class="game-title-bar">
+              <h2>📖 The River Story</h2>
+              <button class="close-btn" onclick="closeGame()">✕</button>
+            </div>
+            <div id="story-area"></div>
+            <div class="story-choices" id="story-choices"></div>
+          </div>
+
+          <!-- Festival Arrange -->
+          <div id="arrange-game" style="display:none">
+            <div class="game-title-bar">
+              <h2>🏮 Arrange the Puja Thali</h2>
+              <button class="close-btn" onclick="closeGame()">✕</button>
+            </div>
+            <div style="font-size:12px;color:rgba(245,230,200,0.5);margin-bottom:12px">Drag the correct items onto the puja thali</div>
+            <div id="festival-zone" ondragover="event.preventDefault()"></div>
+            <div class="item-shelf" id="item-shelf"></div>
+            <div style="font-size:12px;color:rgba(245,230,200,0.45)">Items needed: flowers 🌸, lamp 🪔, rice 🍚, fruit 🍌, incense 🕯️</div>
+          </div>
+
+          <!-- Village Builder -->
+          <div id="build-game" style="display:none">
+            <div class="game-title-bar">
+              <h2>🏗️ Build the Market</h2>
+              <button class="close-btn" onclick="closeGame()">✕</button>
+            </div>
+            <div style="font-size:12px;color:rgba(245,230,200,0.5);margin-bottom:12px">Select a building piece, then tap a slot to place it</div>
+            <div class="build-palette" id="build-palette"></div>
+            <div id="builder-area" style="margin-bottom:16px"></div>
+            <button onclick="submitBuild()" style="width:100%;padding:13px;background:var(--bamboo);border:none;border-radius:12px;color:white;font-size:14px;font-weight:600;cursor:pointer">✓ Complete Market</button>
+          </div>
+        </div>
+
+        <!-- Game selection cards -->
+        <div class="game-grid" id="game-cards">
+          <div class="game-card" style="--card-accent:var(--bamboo)" onclick="startGame('match')">
+            <span class="card-xp">+30 XP</span>
+            <span class="card-emoji">🃏</span>
+            <div class="card-title">Festival Memory Match</div>
+            <div class="card-desc">Remember symbols from Bihu, Durga Puja & Hornbill Fest</div>
+          </div>
+          <div class="game-card" style="--card-accent:var(--river)" onclick="startGame('story')">
+            <span class="card-xp">+25 XP</span>
+            <span class="card-emoji">📖</span>
+            <div class="card-title">River Story</div>
+            <div class="card-desc">Finish Dadi's tale about the Brahmaputra crossing</div>
+          </div>
+          <div class="game-card" style="--card-accent:var(--mustard)" onclick="startGame('arrange')">
+            <span class="card-xp">+20 XP</span>
+            <span class="card-emoji">🏮</span>
+            <div class="card-title">Arrange the Puja</div>
+            <div class="card-desc">Place the right items on the festival thali</div>
+          </div>
+          <div class="game-card" style="--card-accent:var(--earth)" onclick="startGame('build')">
+            <span class="card-xp">+40 XP</span>
+            <span class="card-emoji">🏗️</span>
+            <div class="card-title">Build the Market</div>
+            <div class="card-desc">Earn grains by recreating the village market</div>
+          </div>
+        </div>
+
+        <div class="scroll-pad"></div>
+      </div>
+    </div>
+
+    <!-- VILLAGE TAB -->
+    <div id="village-panel">
+      <div class="section-header">Your Heritage Village</div>
+      <div class="section-sub">Spend grains to unlock village buildings</div>
+      <div id="upgrade-list"></div>
+      <div class="scroll-pad"></div>
+    </div>
+
+    <!-- METRICS TAB -->
+    <div id="metrics-panel">
+      <div class="section-header">Cognitive Insights</div>
+      <div class="section-sub">Shared with your care team after each session</div>
+
+      <div class="metric-card">
+        <div class="metric-title">Response Latency (avg)</div>
+        <div class="metric-val">2.4s</div>
+        <div class="metric-trend">↓ 0.3s from last week — improving</div>
+        <div class="sparkline">
+          <svg width="100%" height="36" viewBox="0 0 200 36">
+            <polyline points="0,28 33,24 66,20 99,26 132,16 165,22 200,14"
+              stroke="#6BAA75" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="0,28 33,24 66,20 99,26 132,16 165,22 200,14"
+              stroke="none" fill="url(#g1)"/>
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#6BAA75" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#6BAA75" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-title">Touch Drift Index</div>
+        <div class="metric-val" style="color:var(--mustard)">Low</div>
+        <div class="metric-trend" style="color:var(--mustard)">Steady — no concern flagged</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-title">Decision Accuracy (7-day)</div>
+        <div class="metric-val">78%</div>
+        <div class="metric-trend">↑ 4% — keep going!</div>
+        <div class="sparkline">
+          <svg width="100%" height="36" viewBox="0 0 200 36">
+            <polyline points="0,32 33,28 66,24 99,20 132,22 165,16 200,12"
+              stroke="#3A7CA5" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-title">Streak</div>
+        <div class="metric-val" style="color:var(--festival)">14 🔥</div>
+        <div class="metric-trend" style="color:var(--festival)">14 days in a row — wonderful!</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-title">Clinician Note</div>
+        <div style="font-size:13px;color:rgba(245,230,200,0.7);line-height:1.6;margin-top:4px">
+          Positive trend across all metrics this week. Cultural scenarios show notably higher engagement. Consider introducing the Hornbill Festival content pack next session.
+        </div>
+      </div>
+
+      <div class="scroll-pad"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom Nav -->
+<div id="bottom-nav">
+  <button class="nav-btn active" id="nav-play" onclick="switchTab('play')">🎮<span>Play</span></button>
+  <button class="nav-btn" id="nav-village" onclick="switchTab('village')">🏘️<span>Village</span></button>
+  <button class="nav-btn" id="nav-metrics" onclick="switchTab('metrics')">📊<span>Insights</span></button>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+<div id="latency-indicator">⏱ 0ms</div>
+
+<script>
+// ─── STATE ───────────────────────────────────────────────────
+const state = {
+  score: 82, grains: 240, day: 14, xp: 0,
+  tasksCompleted: new Set(),
+  selectedTool: null,
+  buildGrid: Array(15).fill(null),
+  startTime: null,
+  latencies: [],
+};
+
+// ─── FIREFLIES ───────────────────────────────────────────────
+function spawnFireflies() {
+  const scene = document.getElementById('scene');
+  for (let i = 0; i < 8; i++) {
+    const f = document.createElement('div');
+    f.className = 'firefly';
+    const x = 15 + Math.random() * 70;
+    const y = 30 + Math.random() * 40;
+    const tx = (Math.random() - 0.5) * 80 + 'px';
+    const ty = (Math.random() - 0.5) * 60 + 'px';
+    f.style.cssText = `left:${x}%;top:${y}%;--tx:${tx};--ty:${ty};animation-duration:${3+Math.random()*4}s;animation-delay:${-Math.random()*6}s`;
+    scene.appendChild(f);
+  }
+}
+spawnFireflies();
+
+// ─── TOAST ───────────────────────────────────────────────────
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ─── TAB SWITCHING ───────────────────────────────────────────
+function switchTab(tab) {
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('nav-'+tab).classList.add('active');
+  document.getElementById('play-tab').style.display    = tab === 'play'    ? 'block' : 'none';
+  document.getElementById('village-panel').style.display = tab === 'village' ? 'block' : 'none';
+  document.getElementById('metrics-panel').style.display = tab === 'metrics' ? 'block' : 'none';
+  if (tab === 'village') renderVillage();
+}
+
+// ─── TASK SELECTION ──────────────────────────────────────────
+function selectTask(el, gameId) {
+  if (el.classList.contains('completed')) return;
+  document.querySelectorAll('.task-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  startGame(gameId);
+}
+
+// ─── LATENCY TRACKING ────────────────────────────────────────
+function recordInteraction() {
+  if (!state.startTime) { state.startTime = Date.now(); return; }
+  const dt = Date.now() - state.startTime;
+  state.latencies.push(dt);
+  state.startTime = Date.now();
+  document.getElementById('latency-indicator').textContent = `⏱ ${dt}ms`;
+}
+document.addEventListener('click', recordInteraction);
+
+// ─── SCORE UPDATER ───────────────────────────────────────────
+function addXP(amount) {
+  state.xp += amount;
+  state.score = Math.min(100, state.score + Math.floor(amount / 10));
+  state.grains += amount * 2;
+  document.getElementById('scoreVal').textContent = state.score;
+  document.getElementById('resourceCount').textContent = state.grains;
+  animateScore();
+}
+function animateScore() {
+  const el = document.getElementById('scoreVal');
+  el.style.transform = 'scale(1.3)';
+  el.style.color = '#FFD700';
+  setTimeout(() => { el.style.transform = ''; el.style.color = ''; }, 400);
+}
+
+// ─── GAME LAUNCHER ───────────────────────────────────────────
+function startGame(id) {
+  document.getElementById('game-panel').classList.add('active');
+  document.getElementById('game-cards').style.display = 'none';
+  ['match','story','arrange','build'].forEach(g =>
+    document.getElementById(g+'-game').style.display = 'none'
+  );
+  document.getElementById(id+'-game').style.display = 'block';
+  state.startTime = Date.now();
+  if (id === 'match')   initMatch();
+  if (id === 'story')   initStory();
+  if (id === 'arrange') initArrange();
+  if (id === 'build')   initBuild();
+}
+
+function closeGame() {
+  document.getElementById('game-panel').classList.remove('active');
+  document.getElementById('game-cards').style.display = 'grid';
+}
+
+// ─── MEMORY MATCH GAME ───────────────────────────────────────
+const festivalSymbols = ['🪘','🌸','🏮','🎋','🥁','🌺'];
+let matchState = { cards: [], flipped: [], matched: 0 };
+
+function initMatch() {
+  matchState = { cards: [], flipped: [], matched: 0, lock: false };
+  const items = [...festivalSymbols, ...festivalSymbols]
+    .sort(() => Math.random() - 0.5);
+  const grid = document.getElementById('match-grid');
+  grid.innerHTML = '';
+  document.getElementById('matchCount').textContent = '0 / 6';
+  document.getElementById('matchProgress').style.width = '0%';
+
+  items.forEach((sym, i) => {
+    const card = document.createElement('div');
+    card.className = 'match-card hidden-face';
+    card.dataset.sym = sym;
+    card.dataset.idx = i;
+    card.onclick = () => flipCard(card, sym, i);
+    grid.appendChild(card);
+    matchState.cards.push({ el: card, sym, matched: false });
+  });
+}
+
+function flipCard(card, sym, idx) {
+  if (matchState.lock) return;
+  if (card.classList.contains('matched')) return;
+  if (matchState.flipped.length === 1 && matchState.flipped[0].idx === idx) return;
+
+  card.classList.remove('hidden-face');
+  card.classList.add('flipped');
+  card.textContent = sym;
+  matchState.flipped.push({ el: card, sym, idx });
+
+  if (matchState.flipped.length === 2) {
+    matchState.lock = true;
+    const [a, b] = matchState.flipped;
+    if (a.sym === b.sym) {
+      a.el.classList.add('matched');
+      b.el.classList.add('matched');
+      matchState.matched++;
+      const pct = (matchState.matched / 6) * 100;
+      document.getElementById('matchCount').textContent = `${matchState.matched} / 6`;
+      document.getElementById('matchProgress').style.width = pct + '%';
+      matchState.flipped = [];
+      matchState.lock = false;
+      toast('✨ Match found!');
+      if (matchState.matched === 6) {
+        setTimeout(() => {
+          toast('🎉 All matched! +30 XP');
+          addXP(30);
+          markTaskDone('match');
+        }, 500);
+      }
+    } else {
+      setTimeout(() => {
+        a.el.classList.remove('flipped');
+        b.el.classList.remove('flipped');
+        a.el.classList.add('hidden-face');
+        b.el.classList.add('hidden-face');
+        a.el.textContent = '';
+        b.el.textContent = '';
+        matchState.flipped = [];
+        matchState.lock = false;
+      }, 900);
+    }
+  }
+}
+
+// ─── STORY GAME ──────────────────────────────────────────────
+const stories = [
+  {
+    text: "Meghna crossed the river at dawn, her bamboo basket filled with marigolds for the Bihu celebration. The boatman Ramu asked which flower in NER is offered first at the fire altar. What did Meghna answer?",
+    choices: [
+      { text: "🌺 Marigold — the gold of Bihu", correct: true },
+      { text: "🌸 Cherry blossom — the pink of spring", correct: false },
+      { text: "🍀 Sacred fern from the hilltop", correct: false },
+    ]
+  },
+  {
+    text: "At the Hornbill Festival, grandfather pointed to the long house and said: 'This is where our tribe celebrates the new harvest.' What is the name for this communal house in Naga culture?",
+    choices: [
+      { text: "🏡 Morung — the youth's house", correct: true },
+      { text: "🏯 Rajbari — the king's palace", correct: false },
+      { text: "⛺ Chawkidar — the night shelter", correct: false },
+    ]
+  },
+  {
+    text: "The Bihu dance began and grandmother hummed along. The young dancers wore bright red and carried a specific musical instrument. Which instrument is most associated with Bihu?",
+    choices: [
+      { text: "🪘 Dhol — the barrel drum of Assam", correct: true },
+      { text: "🎺 Nagara — the royal trumpet", correct: false },
+      { text: "🎸 Dotara — the two-string lute", correct: false },
+    ]
+  }
+];
+let storyIdx = 0;
+
+function initStory() {
+  storyIdx = Math.floor(Math.random() * stories.length);
+  renderStory();
+}
+
+function renderStory() {
+  const s = stories[storyIdx];
+  document.getElementById('story-area').textContent = s.text;
+  const choiceEl = document.getElementById('story-choices');
+  choiceEl.innerHTML = '';
+  s.choices.sort(() => Math.random() - 0.5).forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'story-choice';
+    btn.textContent = c.text;
+    btn.onclick = () => answerStory(btn, c.correct, choiceEl);
+    choiceEl.appendChild(btn);
+  });
+}
+
+function answerStory(btn, correct, choiceEl) {
+  Array.from(choiceEl.children).forEach(b => b.onclick = null);
+  if (correct) {
+    btn.classList.add('correct');
+    toast('🌟 Correct! +25 XP');
+    addXP(25);
+    markTaskDone('story');
+  } else {
+    btn.classList.add('wrong');
+    // Show correct
+    Array.from(choiceEl.children).forEach(b => {
+      if (b !== btn) { b.style.opacity = '0.4'; }
+    });
+    toast('Not quite — the answer is highlighted');
+    addXP(5);
+  }
+}
+
+// ─── FESTIVAL ARRANGE ─────────────────────────────────────────
+const pujaItems = [
+  { emoji:'🌸', name:'Flower', correct:true },
+  { emoji:'🪔', name:'Lamp',   correct:true },
+  { emoji:'🍚', name:'Rice',   correct:true },
+  { emoji:'🍌', name:'Banana', correct:true },
+  { emoji:'🕯️', name:'Incense',correct:true },
+  { emoji:'🧢', name:'Hat',    correct:false },
+  { emoji:'📱', name:'Phone',  correct:false },
+  { emoji:'🔧', name:'Wrench', correct:false },
+];
+
+let arrangeState = { placed: 0 };
+
+function initArrange() {
+  arrangeState = { placed: 0 };
+  const shelf = document.getElementById('item-shelf');
+  const zone  = document.getElementById('festival-zone');
+  shelf.innerHTML = '';
+  zone.innerHTML  = '<div style="color:rgba(245,230,200,0.3);font-size:13px">Drop festival items here</div>';
+
+  pujaItems.sort(() => Math.random() - 0.5).forEach(item => {
+    const el = document.createElement('div');
+    el.className = 'festival-item';
+    el.textContent = item.emoji;
+    el.title = item.name;
+    el.draggable = true;
+    el.dataset.correct = item.correct;
+    el.dataset.name = item.name;
+
+    el.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('emoji', item.emoji);
+      e.dataTransfer.setData('correct', item.correct);
+      e.dataTransfer.setData('name', item.name);
+    });
+
+    // Touch fallback
+    el.addEventListener('click', () => tapPlaceItem(el, item));
+    shelf.appendChild(el);
+  });
+
+  const zone2 = document.getElementById('festival-zone');
+  zone2.ondragover = e => { e.preventDefault(); zone2.classList.add('drag-over'); };
+  zone2.ondragleave = () => zone2.classList.remove('drag-over');
+  zone2.ondrop = e => {
+    e.preventDefault();
+    zone2.classList.remove('drag-over');
+    const correct = e.dataTransfer.getData('correct') === 'true';
+    const emoji   = e.dataTransfer.getData('emoji');
+    const name    = e.dataTransfer.getData('name');
+    placeOnThali(emoji, correct, name);
+  };
+}
+
+function tapPlaceItem(el, item) {
+  if (el.classList.contains('placed')) return;
+  el.classList.add('placed');
+  placeOnThali(item.emoji, item.correct, item.name);
+}
+
+function placeOnThali(emoji, correct, name) {
+  const zone = document.getElementById('festival-zone');
+  // Clear placeholder
+  if (zone.querySelector('div')) zone.innerHTML = '';
+  const el = document.createElement('div');
+  el.style.cssText = 'font-size:32px;padding:8px;border-radius:10px;animation:pulse-match 0.3s ease';
+  el.textContent = emoji;
+  if (correct) {
+    el.style.background = 'rgba(107,170,117,0.2)';
+    el.style.border = '1.5px solid var(--leaf)';
+    arrangeState.placed++;
+    zone.appendChild(el);
+    toast(`✓ ${name} added to thali`);
+    if (arrangeState.placed === 5) {
+      setTimeout(() => { toast('🏮 Perfect thali! +20 XP'); addXP(20); markTaskDone('arrange'); }, 600);
+    }
+  } else {
+    el.style.background = 'rgba(192,57,43,0.2)';
+    el.style.border = '1.5px solid var(--festival)';
+    zone.appendChild(el);
+    setTimeout(() => el.remove(), 1200);
+    toast(`✗ ${name} doesn't belong here`);
+  }
+}
+
+// ─── VILLAGE BUILDER ─────────────────────────────────────────
+const buildPieces = ['🏠','🛖','⛺','🪵','🌿','🪴','🌳','🌻','💧'];
+
+function initBuild() {
+  state.buildGrid = Array(15).fill(null);
+  state.selectedTool = null;
+
+  const palette = document.getElementById('build-palette');
+  palette.innerHTML = '';
+  buildPieces.forEach(p => {
+    const el = document.createElement('div');
+    el.className = 'build-item';
+    el.textContent = p;
+    el.onclick = () => {
+      document.querySelectorAll('.build-item').forEach(b => b.classList.remove('selected-tool'));
+      el.classList.add('selected-tool');
+      state.selectedTool = p;
+    };
+    palette.appendChild(el);
+  });
+
+  const grid = document.getElementById('builder-area');
+  grid.innerHTML = '';
+  for (let i = 0; i < 15; i++) {
+    const slot = document.createElement('div');
+    slot.className = 'build-slot';
+    slot.dataset.idx = i;
+    slot.onclick = () => placeBuilding(slot, i);
+    grid.appendChild(slot);
+  }
+}
+
+function placeBuilding(slot, idx) {
+  if (!state.selectedTool) { toast('Pick a building piece first!'); return; }
+  state.buildGrid[idx] = state.selectedTool;
+  slot.textContent = state.selectedTool;
+  slot.classList.add('filled');
+}
+
+function submitBuild() {
+  const filled = state.buildGrid.filter(Boolean).length;
+  if (filled < 5) { toast('Place at least 5 buildings first!'); return; }
+  toast(`🏗️ Market built! +40 XP`);
+  addXP(40);
+  markTaskDone('build');
+  // Animate scene
+  document.getElementById('scene').style.filter = 'brightness(1.2)';
+  setTimeout(() => document.getElementById('scene').style.filter = '', 800);
+}
+
+// ─── TASK COMPLETION ─────────────────────────────────────────
+function markTaskDone(id) {
+  state.tasksCompleted.add(id);
+  const gameMap = { match:0, story:1, arrange:2, build:3 };
+  const chips = document.querySelectorAll('.task-chip');
+  chips[gameMap[id]].classList.add('completed');
+  chips[gameMap[id]].classList.remove('active');
+  setTimeout(closeGame, 1500);
+  if (state.tasksCompleted.size === 4) {
+    setTimeout(() => toast('🎊 All tasks done today! Village grows!'), 2000);
+    document.getElementById('dayCount').textContent = ++state.day;
+  }
+}
+
+// ─── VILLAGE UPGRADES ────────────────────────────────────────
+const upgrades = [
+  { emoji:'🎪', name:'Festival Tent', detail:'Unlock Bihu & Hornbill mini-events', cost:100, bought:false },
+  { emoji:'🪺', name:'Weaver\'s Loom', detail:'Reveals patterns of NER textiles', cost:200, bought:false },
+  { emoji:'⛵', name:'River Ferry',    detail:'Cross to the next village and meet elders', cost:300, bought:false },
+  { emoji:'🌾', name:'Paddy Field',   detail:'Harvest mini-game — test counting skills', cost:150, bought:false },
+  { emoji:'🏮', name:'Lantern Gate',  detail:'Festival night mode unlocked', cost:400, bought:false },
+  { emoji:'🎋', name:'Bamboo Grove',  detail:'Nature sounds — calming background audio', cost:120, bought:true  },
+  { emoji:'🌊', name:'Sacred River',  detail:'Meditation mode between sessions', cost:500, bought:false },
+];
+
+function renderVillage() {
+  const list = document.getElementById('upgrade-list');
+  list.innerHTML = '';
+  upgrades.forEach((u, i) => {
+    const el = document.createElement('div');
+    el.className = 'upgrade-card' + (u.bought ? ' bought' : '');
+    el.innerHTML = `
+      <div class="emoji">${u.emoji}</div>
+      <div class="info">
+        <div class="name">${u.name}</div>
+        <div class="detail">${u.detail}</div>
+      </div>
+      <div class="cost">${u.bought ? '✓ Built' : '🌾 '+u.cost}</div>
+    `;
+    if (!u.bought) {
+      el.onclick = () => buyUpgrade(i, el, u);
+    }
+    list.appendChild(el);
+  });
+}
+
+function buyUpgrade(i, el, u) {
+  if (state.grains < u.cost) {
+    toast(`Need ${u.cost - state.grains} more grains`);
+    return;
+  }
+  state.grains -= u.cost;
+  upgrades[i].bought = true;
+  document.getElementById('resourceCount').textContent = state.grains;
+  toast(`✅ ${u.name} added to your village!`);
+  renderVillage();
+}
+
+// ─── INITIAL TAB ─────────────────────────────────────────────
+switchTab('play');
+document.getElementById('village-panel').style.display = 'none';
+document.getElementById('metrics-panel').style.display = 'none';
+document.getElementById('play-tab').style.display = 'block';
+
+// Auto-start first task hint
+setTimeout(() => toast('👆 Tap a task chip or game card to begin'), 1200);
+</script>
+</body>
+</html>

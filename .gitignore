@@ -223,3 +223,4 @@ __pycache__/
 venv/
 .vscode/
 venv/
+.env

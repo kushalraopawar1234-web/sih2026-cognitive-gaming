@@ -8,13 +8,17 @@ Project: AI-Based Cognitive Gaming and Memory Assistance Platform
 SIH 2026 | Problem ID: SIH26003 | Team ID: 271
 """
 
+import os
+
+_ML_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # ─────────────────────────────────────────────
 # PATHS
 # ─────────────────────────────────────────────
-DATA_PATH = "data/telemetry_sample.csv"
-OUTPUT_JSON = "outputs/results.json"
-OUTPUT_CSV = "outputs/scores.csv"
-CHARTS_DIR = "outputs/charts"
+DATA_PATH = os.path.join(_ML_DIR, "data", "telemetry_sample.csv")
+OUTPUT_JSON = os.path.join(_ML_DIR, "outputs", "results.json")
+OUTPUT_CSV = os.path.join(_ML_DIR, "outputs", "scores.csv")
+CHARTS_DIR = os.path.join(_ML_DIR, "outputs", "charts")
 
 # ─────────────────────────────────────────────
 # TELEMETRY SCHEMA — Required columns

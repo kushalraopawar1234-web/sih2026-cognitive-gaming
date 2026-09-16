@@ -36,7 +36,7 @@ from src.preprocessing import load_telemetry, validate, preprocess, engineer_fea
 from src.baseline      import compute_personal_baseline
 from src.scoring       import compute_scores
 from src.analytics     import detect_trends, build_results
-from src.config        import MIN_BASELINE_SESSIONS
+from src.config        import MIN_BASELINE_SESSIONS, DATA_PATH
 
 
 # ─────────────────────────────────────────────────────────────
@@ -92,7 +92,7 @@ def _multi_session_df(user_id="U001", n=6, **kwargs):
 
 def test_valid_data_loads():
     """All 44 rows of the synthetic dataset should pass validation."""
-    df = load_telemetry("data/telemetry_sample.csv")
+    df = load_telemetry(DATA_PATH)
     df_valid, issues = validate(df)
     assert len(df_valid) == len(df), "All rows should pass for the clean synthetic dataset."
     assert issues == [], f"Expected no issues, got: {issues}"
@@ -100,7 +100,7 @@ def test_valid_data_loads():
 
 def test_valid_data_full_pipeline():
     """Full pipeline should run without exceptions on clean data."""
-    df = load_telemetry("data/telemetry_sample.csv")
+    df = load_telemetry(DATA_PATH)
     df = _full_pipeline(df)
     assert len(df) == 44
     assert "behavioral_score" in df.columns
@@ -222,7 +222,7 @@ def test_insufficient_history():
 
 def test_score_range():
     """Behavioral scores must always be in [0.0, 1.0]."""
-    df = load_telemetry("data/telemetry_sample.csv")
+    df = load_telemetry(DATA_PATH)
     df = _full_pipeline(df)
     scores = df["behavioral_score"]
 
@@ -233,7 +233,7 @@ def test_score_range():
 
 def test_score_no_nan():
     """No session should have a NaN behavioral score."""
-    df = load_telemetry("data/telemetry_sample.csv")
+    df = load_telemetry(DATA_PATH)
     df = _full_pipeline(df)
     assert not df["behavioral_score"].isna().any(), "NaN behavioral score found."
 
@@ -244,7 +244,7 @@ def test_score_no_nan():
 
 def test_trend_u002_improving():
     """U002 is designed with an improving trend. Trend should be 'Improving'."""
-    df = load_telemetry("data/telemetry_sample.csv")
+    df = load_telemetry(DATA_PATH)
     df = _full_pipeline(df)
     u2_trend = df[df["user_id"] == "U002"]["trend"].iloc[-1]
     assert u2_trend == "Improving", f"Expected 'Improving' for U002, got '{u2_trend}'"
@@ -252,7 +252,7 @@ def test_trend_u002_improving():
 
 def test_trend_u003_changing():
     """U003 is designed with a worsening trend. Trend should be 'Changing'."""
-    df = load_telemetry("data/telemetry_sample.csv")
+    df = load_telemetry(DATA_PATH)
     df = _full_pipeline(df)
     u3_trend = df[df["user_id"] == "U003"]["trend"].iloc[-1]
     assert u3_trend == "Changing", f"Expected 'Changing' for U003, got '{u3_trend}'"
@@ -260,7 +260,7 @@ def test_trend_u003_changing():
 
 def test_trend_u005_insufficient():
     """U005 has only 2 sessions. Trend should be 'Insufficient Data'."""
-    df = load_telemetry("data/telemetry_sample.csv")
+    df = load_telemetry(DATA_PATH)
     df = _full_pipeline(df)
     u5_trend = df[df["user_id"] == "U005"]["trend"].iloc[-1]
     assert u5_trend == "Insufficient Data", (
@@ -280,7 +280,7 @@ def test_json_output_structure():
         "trend", "top_contributing_factors", "explanation",
         "disclaimer",
     ]
-    df = load_telemetry("data/telemetry_sample.csv")
+    df = load_telemetry(DATA_PATH)
     df = _full_pipeline(df)
     results = build_results(df)
 
@@ -291,7 +291,7 @@ def test_json_output_structure():
 
 def test_json_scores_valid():
     """behavioral_score in JSON must be a float between 0 and 1."""
-    df = load_telemetry("data/telemetry_sample.csv")
+    df = load_telemetry(DATA_PATH)
     df = _full_pipeline(df)
     results = build_results(df)
 
@@ -303,7 +303,7 @@ def test_json_scores_valid():
 
 def test_json_disclaimer_present():
     """Every result must include the PROTOTYPE disclaimer."""
-    df = load_telemetry("data/telemetry_sample.csv")
+    df = load_telemetry(DATA_PATH)
     df = _full_pipeline(df)
     results = build_results(df)
 

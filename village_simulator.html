@@ -1,0 +1,2034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#4A7C59">
+<link rel="manifest" href="./manifest.webmanifest">
+<title>Meghalaya Mornings — Memory Village</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bamboo:    #4A7C59;
+    --earth:     #8B5E3C;
+    --mustard:   #D4A017;
+    --river:     #3A7CA5;
+    --dawn:      #F5E6C8;
+    --smoke:     #2B2520;
+    --leaf:      #6BAA75;
+    --festival:  #C0392B;
+    --fog:       #EAE0D0;
+    --deep:      #1A1410;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--smoke);
+    color: var(--dawn);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── VILLAGE SCENE ─── */
+  #scene {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    overflow: hidden;
+    background-image:
+      linear-gradient(180deg, rgba(20,38,42,0.18), rgba(30,48,28,0.28)),
+      url('./village-background.png'),
+      linear-gradient(180deg, #243E61 0%, #7897B2 44%, #9AAE82 44%, #536A43 100%);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  /* Sky & Clouds */
+  .cloud {
+    position: absolute;
+    background: rgba(255,255,255,0.18);
+    border-radius: 50px;
+    filter: blur(6px);
+    animation: drift linear infinite;
+  }
+  .cloud1 { width:120px; height:30px; top:18%; left:-10%; animation-duration:28s; }
+  .cloud2 { width:80px;  height:20px; top:28%; left:-8%; animation-duration:38s; animation-delay:-12s; }
+  .cloud3 { width:150px; height:35px; top:12%; left:-12%; animation-duration:44s; animation-delay:-20s; }
+  @keyframes drift { to { left: 115%; } }
+
+  /* Mountains */
+  .mountains {
+    position: absolute;
+    bottom: 55%;
+    left: 0; right: 0;
+    height: 120px;
+    background: linear-gradient(180deg, transparent 0%, #3A5A3A 100%);
+    clip-path: polygon(0% 100%, 8% 30%, 18% 65%, 28% 15%, 40% 60%, 52% 25%, 62% 55%, 75% 10%, 85% 50%, 100% 20%, 100% 100%);
+    opacity: 0.2;
+    z-index: 0;
+  }
+
+  .far-ridge, .mid-ridge {
+    position: absolute;
+    left: 0; right: 0;
+    pointer-events: none;
+  }
+  .far-ridge {
+    bottom: 49%;
+    height: 92px;
+    background: #617A78;
+    clip-path: polygon(0 100%, 12% 38%, 24% 65%, 38% 24%, 51% 62%, 67% 18%, 81% 57%, 100% 30%, 100% 100%);
+    opacity: 0.16;
+  }
+  .mid-ridge {
+    bottom: 42%;
+    height: 72px;
+    background: #496454;
+    clip-path: polygon(0 100%, 10% 45%, 22% 72%, 35% 30%, 47% 70%, 60% 36%, 74% 68%, 88% 28%, 100% 55%, 100% 100%);
+    opacity: 0.18;
+  }
+
+  /* Ground layer */
+  .ground {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 55%;
+    background:
+      repeating-linear-gradient(166deg, rgba(230,205,132,0.08) 0 2px, transparent 2px 18px),
+      linear-gradient(180deg, #6B8655 0%, #3B512F 100%);
+    opacity: 0.22;
+    z-index: 1;
+  }
+
+  .terrace {
+    position: absolute;
+    left: -5%;
+    width: 110%;
+    height: 22px;
+    border-top: 2px solid rgba(224,204,134,0.42);
+    border-radius: 50%;
+    transform: rotate(-4deg);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .terrace.one { bottom: 22%; }
+  .terrace.two { bottom: 14%; transform: rotate(3deg); opacity: 0.7; }
+  .terrace.three { bottom: 7%; transform: rotate(-2deg); opacity: 0.55; }
+
+  /* Village buildings as CSS art */
+  .village-art {
+    position: absolute;
+    bottom: 28%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    z-index: 5;
+  }
+
+  .hut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    filter: drop-shadow(0 7px 8px rgba(0,0,0,0.38));
+    position: relative;
+  }
+  .hut:hover { transform: translateY(-4px) scale(1.06); }
+
+  .hut-roof {
+    width: 0; height: 0;
+    border-left: solid transparent;
+    border-right: solid transparent;
+    border-bottom: solid #7A4F2B;
+    filter: drop-shadow(0 -2px 0 rgba(245,230,200,0.12));
+    position: relative;
+  }
+  .hut-roof::before {
+    content: '';
+    position: absolute;
+    left: -14px;
+    right: -14px;
+    top: 16px;
+    height: 8px;
+    background: repeating-linear-gradient(90deg, rgba(255,240,190,0.25) 0 4px, rgba(82,46,18,0.45) 4px 8px);
+    border-radius: 3px;
+  }
+  .hut-body {
+    background: linear-gradient(180deg, #C69759 0%, #9A6A3C 100%);
+    position: relative;
+    border: 2px solid rgba(48,32,22,0.42);
+    box-shadow: inset 0 5px 0 rgba(255,218,150,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hut-door {
+    width: 10px; height: 18px;
+    background: #2B1B10;
+    border-radius: 5px 5px 0 0;
+    margin-top: auto;
+    position: relative;
+    z-index: 2;
+    box-shadow: inset 0 0 0 2px rgba(245,230,200,0.13);
+  }
+  .hut-body::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 12px;
+    height: 9px;
+    transform: translateX(-50%);
+    background: #D8C6A4;
+    border: 2px solid #563315;
+    box-shadow: inset 0 0 0 2px rgba(245,230,200,0.28);
+  }
+  .hut-body::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 8px;
+    right: 8px;
+    height: 10px;
+    background: repeating-linear-gradient(90deg, #5D3D27 0 5px, transparent 5px 14px);
+    z-index: -1;
+  }
+
+  .hut.small  .hut-roof  { border-left-width:24px; border-right-width:24px; border-bottom-width:32px; }
+  .hut.small  .hut-body  { width:48px; height:30px; }
+  .hut.medium .hut-roof  { border-left-width:34px; border-right-width:34px; border-bottom-width:42px; border-bottom-color: #6F462B; }
+  .hut.medium .hut-body  { width:66px; height:42px; }
+  .hut.large  .hut-roof  { border-left-width:46px; border-right-width:46px; border-bottom-width:52px; border-bottom-color: #7A4020; }
+  .hut.large  .hut-body  { width:90px; height:54px; }
+
+  .hut.temple .hut-roof  {
+    border-left-width:56px; border-right-width:56px; border-bottom-width:62px;
+    border-bottom-color: #7B390C;
+    position: relative;
+  }
+  .hut.temple .hut-body  { width:110px; height:48px; background: linear-gradient(180deg, #A66A38 0%, #7B4B23 100%); }
+
+  /* River */
+  .river {
+    position: absolute;
+    bottom: 28%;
+    left: 0; right: 0;
+    height: 18px;
+    background: linear-gradient(90deg, transparent, var(--river) 20%, #5BA8D4 50%, var(--river) 80%, transparent);
+    opacity: 0.7;
+    animation: flow 3s ease-in-out infinite;
+    z-index: 3;
+    box-shadow: 0 3px 0 rgba(214,236,224,0.28), 0 -2px 0 rgba(22,70,92,0.22);
+  }
+  @keyframes flow {
+    0%,100% { opacity: 0.7; }
+    50%      { opacity: 0.9; }
+  }
+
+  /* Fireflies */
+  .firefly {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: #FFD700;
+    border-radius: 50%;
+    animation: float-fly linear infinite;
+    box-shadow: 0 0 6px 2px rgba(255,215,0,0.6);
+  }
+
+  .village-path {
+    position: absolute;
+    left: 43%;
+    bottom: -5%;
+    width: 16%;
+    height: 55%;
+    background: #9A7952;
+    clip-path: polygon(42% 0, 58% 0, 100% 100%, 0 100%);
+    opacity: 0.9;
+    z-index: 4;
+    pointer-events: none;
+  }
+  @keyframes float-fly {
+    0%   { transform: translate(0,0); opacity: 0; }
+    20%  { opacity: 1; }
+    80%  { opacity: 0.8; }
+    100% { transform: translate(var(--tx), var(--ty)); opacity: 0; }
+  }
+
+  /* ─── HUD ─── */
+  #hud {
+    position: absolute;
+    top: 12px; left: 12px; right: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    pointer-events: none;
+  }
+  .hud-left { display: flex; flex-direction: column; gap: 6px; }
+  .hud-badge {
+    background: rgba(26,20,16,0.75);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(212,160,23,0.3);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--mustard);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hud-badge .icon { font-size: 14px; }
+
+  .hud-right {
+    background: rgba(26,20,16,0.75);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(107,170,117,0.3);
+    border-radius: 12px;
+    padding: 8px 14px;
+    text-align: right;
+  }
+  .hud-right .score-val {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 24px;
+    color: var(--leaf);
+    line-height: 1;
+  }
+  .hud-right .score-label { font-size: 10px; color: rgba(245,230,200,0.6); margin-top: 2px; }
+
+  /* ─── MAIN LAYOUT ─── */
+  #shell {
+    display: grid;
+    grid-template-rows: 340px auto;
+    min-height: 100vh;
+  }
+
+  #panel {
+    background: var(--deep);
+    padding: 0 0 40px;
+  }
+
+  /* ─── DAILY TASK STRIP ─── */
+  #daily-strip {
+    background: linear-gradient(135deg, #2B2016 0%, #1A1410 100%);
+    border-top: 2px solid var(--mustard);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    overflow-x: auto;
+  }
+  .strip-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--mustard);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .task-chip {
+    background: rgba(74,124,89,0.2);
+    border: 1.5px solid rgba(74,124,89,0.5);
+    border-radius: 24px;
+    padding: 8px 16px;
+    font-size: 13px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .task-chip:hover, .task-chip.active {
+    background: var(--bamboo);
+    border-color: var(--leaf);
+    transform: translateY(-2px);
+  }
+  .task-chip.completed {
+    background: rgba(107,170,117,0.15);
+    border-color: var(--leaf);
+    color: var(--leaf);
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  /* ─── CONTENT AREA ─── */
+  #content { padding: 24px 20px 90px; }
+
+  .section-header {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 22px;
+    color: var(--dawn);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .section-sub {
+    font-size: 13px;
+    color: rgba(245,230,200,0.55);
+    margin-bottom: 20px;
+  }
+
+  #guide-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 14px;
+    background: linear-gradient(135deg, rgba(58,124,165,0.2), rgba(74,124,89,0.16));
+    border: 1px solid rgba(143,183,161,0.34);
+    border-radius: 14px;
+  }
+  .guide-avatar { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: #B47B4E; border: 3px solid #E9C18B; font-size: 25px; }
+  .guide-label { color: var(--mustard); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
+  #guide-message { color: rgba(245,230,200,0.88); font-size: 13px; line-height: 1.45; margin-top: 3px; }
+  #guide-hint { min-height: 48px; padding: 8px 12px; border: 1px solid var(--mustard); border-radius: 9px; background: rgba(212,160,23,0.16); color: var(--dawn); cursor: pointer; font-size: 12px; }
+  @media (max-width: 560px) { #guide-card { grid-template-columns: auto 1fr; } #guide-hint { grid-column: 1 / -1; width: 100%; } }
+
+  /* ─── GAME CARDS ─── */
+  .game-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .game-card {
+    background: linear-gradient(135deg, #2B2016, #1A1410);
+    border: 1.5px solid rgba(245,230,200,0.1);
+    border-radius: 16px;
+    padding: 18px 14px;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .game-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--card-accent, var(--bamboo));
+    opacity: 0.07;
+    border-radius: inherit;
+  }
+  .game-card:hover {
+    border-color: var(--card-accent, var(--bamboo));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .game-card:hover::before { opacity: 0.14; }
+
+  .card-emoji { font-size: 32px; margin-bottom: 10px; display: block; }
+  .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dawn);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .card-desc {
+    font-size: 11px;
+    color: rgba(245,230,200,0.5);
+    line-height: 1.4;
+  }
+  .card-xp {
+    position: absolute;
+    top: 12px; right: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--mustard);
+    background: rgba(212,160,23,0.15);
+    border-radius: 10px;
+    padding: 3px 8px;
+  }
+
+  /* ─── ACTIVE GAME PANEL ─── */
+  #game-panel {
+    background: linear-gradient(135deg, #2B2016, #1A1410);
+    border: 1.5px solid rgba(212,160,23,0.25);
+    border-radius: 20px;
+    padding: 24px 20px;
+    margin-bottom: 24px;
+    display: none;
+  }
+  #game-panel.active { display: block; animation: slide-in 0.3s ease; }
+  @keyframes slide-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .game-title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .game-title-bar h2 {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 18px;
+    color: var(--mustard);
+  }
+  .close-btn {
+    width: 32px; height: 32px;
+    background: rgba(245,230,200,0.1);
+    border: none;
+    border-radius: 50%;
+    color: var(--dawn);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .close-btn:hover { background: rgba(192,57,43,0.4); }
+
+  /* Memory Match Game */
+  #match-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .match-card {
+    aspect-ratio: 1;
+    background: rgba(74,124,89,0.2);
+    border: 2px solid rgba(74,124,89,0.4);
+    border-radius: 12px;
+    font-size: 28px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .match-card:hover { border-color: var(--leaf); background: rgba(74,124,89,0.35); }
+  .match-card.flipped {
+    background: rgba(139,94,60,0.3);
+    border-color: var(--earth);
+    transform: rotateY(0deg);
+  }
+  .match-card.matched {
+    background: rgba(107,170,117,0.25);
+    border-color: var(--leaf);
+    transform: scale(1.03);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .match-card.hidden-face::before {
+    content: '🌿';
+    font-size: 20px;
+  }
+  @keyframes pulse-match {
+    0%,100% { transform: scale(1); }
+    50%      { transform: scale(1.1); }
+  }
+
+  /* Festival Arrangement */
+  #festival-zone {
+    min-height: 180px;
+    background: rgba(26,20,16,0.6);
+    border: 2px dashed rgba(212,160,23,0.3);
+    border-radius: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s;
+  }
+  #festival-zone.drag-over { border-color: var(--mustard); background: rgba(212,160,23,0.08); }
+  .festival-item {
+    font-size: 36px;
+    cursor: grab;
+    padding: 8px;
+    background: rgba(74,124,89,0.2);
+    border-radius: 12px;
+    border: 1.5px solid rgba(74,124,89,0.4);
+    transition: all 0.2s;
+    user-select: none;
+    -webkit-user-drag: element;
+  }
+  .festival-item:hover { transform: scale(1.15); border-color: var(--leaf); }
+  .festival-item.placed { opacity: 0.5; cursor: default; }
+  .thali-item {
+    transform: scale(0.82);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+  }
+  .thali-item.snapped-in { transform: scale(1); }
+
+  .item-shelf {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  /* Story prompt */
+  #story-area {
+    background: rgba(26,20,16,0.8);
+    border-left: 3px solid var(--river);
+    border-radius: 0 12px 12px 0;
+    padding: 16px 18px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(245,230,200,0.85);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .story-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .story-choice {
+    background: rgba(58,124,165,0.15);
+    border: 1.5px solid rgba(58,124,165,0.35);
+    border-radius: 12px;
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--dawn);
+    transition: all 0.2s;
+    text-align: left;
+  }
+  .story-choice:hover {
+    background: rgba(58,124,165,0.3);
+    border-color: var(--river);
+    transform: translateX(4px);
+  }
+  .story-choice.correct { background: rgba(107,170,117,0.25); border-color: var(--leaf); color: var(--leaf); }
+  .story-choice.wrong   { background: rgba(192,57,43,0.15); border-color: var(--festival); }
+
+  /* Village Builder */
+  #builder-area {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .build-slot {
+    aspect-ratio: 1;
+    background: rgba(26,20,16,0.6);
+    border: 2px dashed rgba(245,230,200,0.15);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .build-slot:hover { border-color: var(--mustard); background: rgba(212,160,23,0.08); }
+  .build-slot.filled { border-style: solid; border-color: rgba(74,124,89,0.5); }
+  .build-slot { transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s ease, background 0.2s ease; }
+  .build-slot.filled { transform: scale(1.04); }
+
+  .build-palette {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .build-item {
+    font-size: 28px;
+    padding: 8px;
+    background: rgba(74,124,89,0.15);
+    border: 1.5px solid rgba(74,124,89,0.3);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .build-item.selected-tool {
+    background: rgba(74,124,89,0.4);
+    border-color: var(--leaf);
+    transform: scale(1.1);
+  }
+
+  /* ─── PROGRESS BAR ─── */
+  .progress-wrap { margin-bottom: 16px; }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(245,230,200,0.5);
+    margin-bottom: 6px;
+  }
+  .progress-track {
+    height: 6px;
+    background: rgba(245,230,200,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--bamboo), var(--leaf));
+    transition: width 0.5s ease;
+  }
+
+  /* ─── BOTTOM NAV ─── */
+  #bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(26,20,16,0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(212,160,23,0.2);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0 14px;
+    z-index: 100;
+  }
+  .nav-btn {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 4px; cursor: pointer; border: none; background: none;
+    color: rgba(245,230,200,0.4);
+    font-size: 22px;
+    transition: color 0.2s;
+    padding: 4px 16px;
+  }
+  .nav-btn.active { color: var(--mustard); }
+  .nav-btn span { font-size: 10px; font-family: 'DM Sans', sans-serif; }
+
+  /* ─── TOAST ─── */
+  #toast {
+    position: fixed;
+    top: 20px; left: 50%; transform: translateX(-50%) translateY(-80px);
+    background: var(--bamboo);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 999;
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  #toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ─── COGNITIVE METRICS ─── */
+  #metrics-panel {
+    display: none;
+    padding: 24px 20px 90px;
+  }
+  #metrics-panel.active { display: block; }
+
+  .metric-card {
+    background: linear-gradient(135deg, #2B2016, #1A1410);
+    border: 1.5px solid rgba(245,230,200,0.1);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 12px;
+  }
+  .metric-title {
+    font-size: 12px;
+    color: rgba(245,230,200,0.5);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .metric-val {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 32px;
+    color: var(--leaf);
+    line-height: 1;
+  }
+  .metric-trend {
+    font-size: 12px;
+    color: var(--leaf);
+    margin-top: 4px;
+  }
+
+  .sparkline { margin-top: 10px; }
+
+  /* ─── VILLAGE VIEW ─── */
+  #village-panel { display: none; padding: 24px 20px 90px; }
+  #village-panel.active { display: block; }
+
+  .upgrade-card {
+    background: linear-gradient(135deg, #2B2016, #1A1410);
+    border: 1.5px solid rgba(212,160,23,0.2);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .upgrade-card:hover { border-color: var(--mustard); transform: translateX(4px); }
+  .upgrade-card .emoji { font-size: 36px; flex-shrink: 0; }
+  .upgrade-card .info { flex: 1; }
+  .upgrade-card .name { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+  .upgrade-card .detail { font-size: 12px; color: rgba(245,230,200,0.5); }
+  .upgrade-card .cost {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--mustard);
+    white-space: nowrap;
+  }
+  .upgrade-card.bought .emoji { filter: grayscale(0.5); }
+  .upgrade-card.bought .cost { color: var(--leaf); }
+
+  /* scrollpad for content above fixed nav */
+  .scroll-pad { height: 80px; }
+
+  /* Latency bar */
+  #latency-indicator {
+    position: fixed;
+    bottom: 74px; right: 16px;
+    font-size: 10px;
+    color: rgba(245,230,200,0.3);
+    background: rgba(26,20,16,0.8);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  /* Accessible controls: every action stays easy to see and easy to hit. */
+  button, .game-card, .task-chip, .hut, .festival-item, .build-item,
+  .build-slot, .upgrade-card { min-width: 48px; min-height: 48px; }
+  button, .game-card, .task-chip, .hut, .festival-item, .build-item,
+  .build-slot, .upgrade-card { touch-action: manipulation; }
+  button:focus-visible, .game-card:focus-visible, .task-chip:focus-visible,
+  .hut:focus-visible, .festival-item:focus-visible, .build-item:focus-visible,
+  .build-slot:focus-visible, .upgrade-card:focus-visible {
+    outline: 4px solid #FFF2A8;
+    outline-offset: 3px;
+  }
+  .game-grid { gap: 16px; }
+  .task-chip { padding: 12px 18px; }
+  .nav-btn { min-width: 72px; min-height: 56px; }
+  .match-card { min-width: 48px; min-height: 48px; }
+  .story-choice { min-height: 56px; padding: 16px; }
+  .build-item, .festival-item { min-width: 56px; min-height: 56px; display: inline-flex; align-items: center; justify-content: center; }
+  .offline-status {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 110;
+    max-width: calc(100vw - 24px);
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    background: rgba(26,20,16,0.9);
+    color: #FFF2A8;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .offline-status.online { color: #B7F0B7; }
+  #sensory-settings {
+    position: fixed;
+    right: 16px;
+    bottom: 84px;
+    z-index: 120;
+    width: min(320px, calc(100vw - 32px));
+    padding: 18px;
+    background: #241B14;
+    border: 2px solid rgba(212,160,23,0.5);
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+  }
+  #sensory-settings[hidden] { display: none; }
+  .settings-title { color: var(--mustard); font-size: 16px; margin-bottom: 6px; }
+  .settings-help { color: rgba(245,230,200,0.65); font-size: 12px; line-height: 1.5; margin-bottom: 12px; }
+  .settings-option { min-height: 48px; display: flex; align-items: center; gap: 12px; color: var(--dawn); font-size: 14px; }
+  .settings-option input { width: 24px; height: 24px; accent-color: var(--leaf); }
+  .settings-close { width: 100%; min-height: 48px; margin-top: 10px; border: 1px solid rgba(245,230,200,0.3); border-radius: 8px; background: rgba(245,230,200,0.08); color: var(--dawn); cursor: pointer; }
+  .trail-road {
+    position: absolute;
+    z-index: 1;
+    left: 32%;
+    bottom: 0;
+    width: 36%;
+    height: 58%;
+    background: #8B6A4C;
+    clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%);
+    opacity: 0.75;
+  }
+  .terrain-label {
+    position: absolute;
+    z-index: 3;
+    left: 16px;
+    bottom: 12px;
+    color: #FFF8E0;
+    font-size: 11px;
+    font-weight: 600;
+    text-shadow: 0 1px 3px #1A1410;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<div id="shell">
+  <!-- ── SCENE ── -->
+  <div id="scene">
+    <!-- Sky elements -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    <div class="far-ridge"></div>
+    <div class="mountains"></div>
+    <div class="mid-ridge"></div>
+    <div class="ground"></div>
+    <div class="terrace one"></div>
+    <div class="terrace two"></div>
+    <div class="terrace three"></div>
+    <div class="trail-road" aria-hidden="true"></div>
+    <div class="river"></div>
+    <div class="village-path" aria-hidden="true"></div>
+    <div class="terrain-label">Highland trail to the living village</div>
+
+    <!-- Village art -->
+    <div class="village-art" id="villageArt">
+      <div class="hut small" role="button" tabindex="0" title="Your Hut" onclick="startGame('match'); toast('🏠 Your home opens the memory match game')">
+        <div class="hut-roof"></div>
+        <div class="hut-body"><div class="hut-door"></div></div>
+      </div>
+      <div class="hut medium" role="button" tabindex="0" title="Weaver's Workshop" onclick="startGame('recall'); toast('🧵 The workshop opens memory recall')">
+        <div class="hut-roof"></div>
+        <div class="hut-body"><div class="hut-door"></div></div>
+      </div>
+      <div class="hut large temple" role="button" tabindex="0" title="Community Hall" id="communityHall" onclick="startGame('story'); toast('🪘 The hall opens the story memory task')">
+        <div class="hut-roof"></div>
+        <div class="hut-body"><div class="hut-door" style="width:12px;height:20px"></div></div>
+      </div>
+      <div class="hut medium" role="button" tabindex="0" title="Market" onclick="startGame('build'); toast('🛖 The market opens the building memory task')">
+        <div class="hut-roof"></div>
+        <div class="hut-body"><div class="hut-door"></div></div>
+      </div>
+      <div class="hut small" role="button" tabindex="0" title="Elder's House" onclick="startGame('arrange'); toast('🌺 Dadi\'s house opens the thali memory task')">
+        <div class="hut-roof"></div>
+        <div class="hut-body"><div class="hut-door"></div></div>
+      </div>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud">
+      <div class="hud-left">
+        <div class="hud-badge"><span class="icon">⭐</span> Day <span id="dayCount">14</span></div>
+        <div class="hud-badge"><span class="icon">🌾</span> <span id="resourceCount">240</span> Grains</div>
+      </div>
+      <div class="hud-right">
+        <div class="score-val" id="scoreVal">82</div>
+        <div class="score-label">Memory Score</div>
+      </div>
+    </div>
+
+    <!-- Fireflies (JS will add) -->
+  </div>
+
+  <!-- ── PANEL ── -->
+  <div id="panel">
+    <!-- Daily tasks strip -->
+    <div id="daily-strip">
+      <div class="strip-label">Today's Tasks</div>
+      <div class="task-chip active" onclick="selectTask(this,'match')">🃏 Match Festival Items</div>
+      <div class="task-chip" onclick="selectTask(this,'story')">📖 Morning Story</div>
+      <div class="task-chip" onclick="selectTask(this,'arrange')">🏮 Arrange the Puja</div>
+      <div class="task-chip" onclick="selectTask(this,'build')">🏗️ Build the Market</div>
+      <div class="task-chip" onclick="selectTask(this,'person')">👤 Identify the Person</div>
+      <div class="task-chip" onclick="selectTask(this,'culture')">🪔 Festival Culture</div>
+    </div>
+
+    <!-- PLAY TAB -->
+    <div id="play-tab">
+      <div id="content">
+        <div class="section-header">Good morning, Kaki 🌅</div>
+        <div class="section-sub">Your village missed you. Three tasks await today.</div>
+        <section id="guide-card" aria-live="polite">
+          <div class="guide-avatar" aria-hidden="true">👵🏽</div>
+          <div>
+            <div class="guide-label">Village helper · friendly guide</div>
+            <div id="guide-message">I am learning your pace. We can begin gently with any task.</div>
+          </div>
+          <button id="guide-hint" type="button" onclick="askGuide()">Ask for a gentle hint</button>
+        </section>
+
+        <!-- Active game panel -->
+        <div id="game-panel">
+          <!-- Memory Match -->
+          <div id="match-game" style="display:none">
+            <div class="game-title-bar">
+              <h2>🃏 Festival Memory Match</h2>
+              <button class="close-btn" onclick="closeGame()">✕</button>
+            </div>
+            <div class="progress-wrap">
+              <div class="progress-label"><span>Matches found</span><span id="matchCount">0 / 6</span></div>
+              <div class="progress-track"><div class="progress-fill" id="matchProgress" style="width:0%"></div></div>
+            </div>
+            <div id="match-grid"></div>
+            <div style="font-size:12px;color:rgba(245,230,200,0.45);text-align:center">Tap two cards to find matching festival symbols</div>
+          </div>
+
+          <!-- Story Mode -->
+          <div id="story-game" style="display:none">
+            <div class="game-title-bar">
+              <h2>📖 The River Story</h2>
+              <button class="close-btn" onclick="closeGame()">✕</button>
+            </div>
+            <div id="story-area"></div>
+            <div class="story-choices" id="story-choices"></div>
+          </div>
+
+          <!-- Festival Arrange -->
+          <div id="arrange-game" style="display:none">
+            <div class="game-title-bar">
+              <h2>🏮 Arrange the Puja Thali</h2>
+              <button class="close-btn" onclick="closeGame()">✕</button>
+            </div>
+            <div style="font-size:12px;color:rgba(245,230,200,0.5);margin-bottom:12px">Drag the correct items onto the puja thali</div>
+            <div id="festival-zone" ondragover="event.preventDefault()"></div>
+            <div class="item-shelf" id="item-shelf"></div>
+            <div style="font-size:12px;color:rgba(245,230,200,0.45)">Items needed: flowers 🌸, lamp 🪔, rice 🍚, fruit 🍌, incense 🕯️</div>
+          </div>
+
+          <!-- Village Builder -->
+          <div id="build-game" style="display:none">
+            <div class="game-title-bar">
+              <h2>🏗️ Build the Market</h2>
+              <button class="close-btn" onclick="closeGame()">✕</button>
+            </div>
+            <div style="font-size:12px;color:rgba(245,230,200,0.5);margin-bottom:12px">Select a building piece, then tap a slot to place it</div>
+            <div class="build-palette" id="build-palette"></div>
+            <div id="builder-area" style="margin-bottom:16px"></div>
+            <button id="complete-market" onclick="submitBuild()" style="width:100%;padding:13px;background:var(--bamboo);border:none;border-radius:12px;color:white;font-size:14px;font-weight:600;cursor:pointer">✓ Complete Market</button>
+          </div>
+
+          <!-- Identify Person -->
+          <div id="person-game" style="display:none">
+            <div class="game-title-bar">
+              <h2>👤 Identify the Person</h2>
+              <button class="close-btn" onclick="closeGame()">✕</button>
+            </div>
+            <div id="person-clue" style="font-size:14px; color:rgba(245,230,200,0.7); margin-bottom:12px"></div>
+            <div id="person-options" class="story-choices"></div>
+          </div>
+
+          <!-- Hindu Festival Culture -->
+          <div id="culture-game" style="display:none">
+            <div class="game-title-bar">
+              <h2>🪔 Festival Culture Recall</h2>
+              <button class="close-btn" onclick="closeGame()">✕</button>
+            </div>
+            <div id="culture-question" style="font-size:15px; line-height:1.5; color:rgba(245,230,200,0.88); margin-bottom:12px"></div>
+            <div id="culture-options" class="story-choices"></div>
+          </div>
+        </div>
+
+        <!-- Game selection cards -->
+        <div class="game-grid" id="game-cards">
+          <div class="game-card" style="--card-accent:var(--bamboo)" onclick="startGame('match')">
+            <span class="card-xp">+30 XP</span>
+            <span class="card-emoji">🃏</span>
+            <div class="card-title">Festival Memory Match</div>
+            <div class="card-desc">Remember symbols from Bihu, Durga Puja & Hornbill Fest</div>
+          </div>
+          <div class="game-card" style="--card-accent:var(--river)" onclick="startGame('story')">
+            <span class="card-xp">+25 XP</span>
+            <span class="card-emoji">📖</span>
+            <div class="card-title">River Story</div>
+            <div class="card-desc">Finish the village tale about the Brahmaputra crossing</div>
+          </div>
+          <div class="game-card" style="--card-accent:var(--mustard)" onclick="startGame('arrange')">
+            <span class="card-xp">+20 XP</span>
+            <span class="card-emoji">🏮</span>
+            <div class="card-title">Arrange the Puja</div>
+            <div class="card-desc">Place the right items on the festival thali</div>
+          </div>
+          <div class="game-card" style="--card-accent:var(--earth)" onclick="startGame('build')">
+            <span class="card-xp">+40 XP</span>
+            <span class="card-emoji">🏗️</span>
+            <div class="card-title">Build the Market</div>
+            <div class="card-desc">Earn grains by recreating the village market</div>
+          </div>
+          <div class="game-card" style="--card-accent:#7E9A6D" onclick="startGame('person')">
+            <span class="card-xp">+35 XP</span>
+            <span class="card-emoji">👤</span>
+            <div class="card-title">Identify the Person</div>
+            <div class="card-desc">Match names with familiar faces from the village</div>
+          </div>
+          <div class="game-card" style="--card-accent:#C76A3E" onclick="startGame('culture')">
+            <span class="card-xp">+30 XP</span>
+            <span class="card-emoji">🪔</span>
+            <div class="card-title">Festival Culture</div>
+            <div class="card-desc">Recall the meaning and traditions of Hindu festivals</div>
+          </div>
+        </div>
+
+        <div class="scroll-pad"></div>
+      </div>
+    </div>
+
+    <!-- VILLAGE TAB -->
+    <div id="village-panel">
+      <div class="section-header">Your Heritage Village</div>
+      <div class="section-sub">Spend grains to unlock village buildings</div>
+      <div id="upgrade-list"></div>
+      <div class="scroll-pad"></div>
+    </div>
+
+    <!-- METRICS TAB -->
+    <div id="metrics-panel">
+      <div class="section-header">Cognitive Insights</div>
+      <div class="section-sub">Shared with your care team after each session</div>
+
+      <div class="metric-card">
+        <div class="metric-title">Response Latency (avg)</div>
+        <div class="metric-val">2.4s</div>
+        <div class="metric-trend">↓ 0.3s from last week — improving</div>
+        <div class="sparkline">
+          <svg width="100%" height="36" viewBox="0 0 200 36">
+            <polyline points="0,28 33,24 66,20 99,26 132,16 165,22 200,14"
+              stroke="#6BAA75" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="0,28 33,24 66,20 99,26 132,16 165,22 200,14"
+              stroke="none" fill="url(#g1)"/>
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#6BAA75" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#6BAA75" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-title">Touch Drift Index</div>
+        <div class="metric-val" style="color:var(--mustard)">Low</div>
+        <div class="metric-trend" style="color:var(--mustard)">Steady — no concern flagged</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-title">Decision Accuracy (7-day)</div>
+        <div class="metric-val">78%</div>
+        <div class="metric-trend">↑ 4% — keep going!</div>
+        <div class="sparkline">
+          <svg width="100%" height="36" viewBox="0 0 200 36">
+            <polyline points="0,32 33,28 66,24 99,20 132,22 165,16 200,12"
+              stroke="#3A7CA5" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-title">Streak</div>
+        <div class="metric-val" style="color:var(--festival)">14 🔥</div>
+        <div class="metric-trend" style="color:var(--festival)">14 days in a row — wonderful!</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-title">Clinician Note</div>
+        <div style="font-size:13px;color:rgba(245,230,200,0.7);line-height:1.6;margin-top:4px">
+          Positive trend across all metrics this week. Cultural scenarios show notably higher engagement. Consider introducing the Hornbill Festival content pack next session.
+        </div>
+      </div>
+
+      <div class="scroll-pad"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom Nav -->
+<div id="bottom-nav">
+  <button class="nav-btn active" id="nav-play" onclick="switchTab('play')">🎮<span>Play</span></button>
+  <button class="nav-btn" id="nav-village" onclick="switchTab('village')">🏘️<span>Village</span></button>
+  <button class="nav-btn" id="nav-metrics" onclick="switchTab('metrics')">📊<span>Insights</span></button>
+  <button class="nav-btn" id="nav-settings" onclick="toggleSettings()">⚙️<span>Comfort</span></button>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+<div id="latency-indicator">⏱ 0ms</div>
+<div id="offline-status" class="offline-status" role="status" aria-live="polite">Local progress ready</div>
+<section id="sensory-settings" role="dialog" aria-labelledby="sensory-settings-title" hidden>
+  <h2 class="settings-title" id="sensory-settings-title">Sensory comfort</h2>
+  <p class="settings-help">Choose gentle feedback for successful actions. These choices stay on this device.</p>
+  <label class="settings-option"><input id="sound-setting" type="checkbox"> Natural sound</label>
+  <label class="settings-option"><input id="vibration-setting" type="checkbox"> Gentle vibration</label>
+  <button class="settings-close" type="button" onclick="toggleSettings(false)">Close</button>
+</section>
+
+<script>
+// ─── STATE ───────────────────────────────────────────────────
+const state = {
+  score: 82, grains: 240, day: 14, xp: 0,
+  tasksCompleted: new Set(),
+  selectedTool: null,
+  buildGrid: Array(15).fill(null),
+  startTime: null,
+  latencies: [],
+  savedUpgrades: null,
+  settings: { sound: true, vibration: true },
+  currentGame: null,
+};
+
+const STORAGE_KEY = 'meghalaya-mornings-state-v2';
+let audioContext;
+
+function updateOfflineStatus(message, online = navigator.onLine) {
+  const status = document.getElementById('offline-status');
+  status.textContent = online ? message : 'Offline mode - progress saved on this device';
+  status.classList.toggle('online', online);
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({
+    score: state.score,
+    grains: state.grains,
+    day: state.day,
+    xp: state.xp,
+    tasksCompleted: [...state.tasksCompleted],
+    buildGrid: state.buildGrid,
+    latencies: state.latencies.slice(-50),
+    settings: state.settings,
+    upgrades: upgrades.map(upgrade => upgrade.bought),
+  }));
+}
+
+function loadState() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+    if (!saved) return;
+    Object.assign(state, {
+      score: Number.isFinite(saved.score) ? saved.score : state.score,
+      grains: Number.isFinite(saved.grains) ? saved.grains : state.grains,
+      day: Number.isFinite(saved.day) ? saved.day : state.day,
+      xp: Number.isFinite(saved.xp) ? saved.xp : state.xp,
+      tasksCompleted: new Set(Array.isArray(saved.tasksCompleted) ? saved.tasksCompleted : []),
+      buildGrid: Array.isArray(saved.buildGrid) && saved.buildGrid.length === 15 ? saved.buildGrid : state.buildGrid,
+      latencies: Array.isArray(saved.latencies) ? saved.latencies : state.latencies,
+      settings: {
+        sound: saved.settings?.sound !== false,
+        vibration: saved.settings?.vibration !== false,
+      },
+    });
+    state.savedUpgrades = Array.isArray(saved.upgrades) ? saved.upgrades : null;
+  } catch (error) {
+    localStorage.removeItem(STORAGE_KEY);
+  }
+}
+
+function playCue(success = true) {
+  if (!state.settings.sound) return;
+  try {
+    audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
+    const duration = success ? 0.16 : 0.1;
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+    const buffer = audioContext.createBuffer(1, audioContext.sampleRate * duration, audioContext.sampleRate);
+    const channel = buffer.getChannelData(0);
+    for (let i = 0; i < channel.length; i++) channel[i] = (Math.random() * 2 - 1) * (1 - i / channel.length);
+    const noise = audioContext.createBufferSource();
+    const filter = audioContext.createBiquadFilter();
+    noise.buffer = buffer;
+    filter.type = 'lowpass';
+    filter.frequency.value = success ? 1300 : 700;
+    gain.gain.setValueAtTime(0.0001, audioContext.currentTime);
+    gain.gain.exponentialRampToValueAtTime(success ? 0.035 : 0.02, audioContext.currentTime + 0.005);
+    gain.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + duration);
+    noise.connect(filter).connect(gain).connect(audioContext.destination);
+    noise.start();
+    noise.stop(audioContext.currentTime + duration);
+  } catch (error) {
+    // Audio is optional and may be unavailable in a locked-down browser.
+  }
+}
+
+function triggerCompletionVibration(success = true) {
+  if (!state.settings.vibration || !('vibrate' in navigator)) return;
+  navigator.vibrate(success ? 45 : 25);
+}
+
+function completeSensoryFeedback(element = null, success = true) {
+  if (element && success) {
+    element.classList.add('snapped-in');
+    element.setAttribute('aria-live', 'polite');
+  }
+  playCue(success);
+  triggerCompletionVibration(success);
+}
+
+function toggleSettings(force) {
+  const panel = document.getElementById('sensory-settings');
+  panel.hidden = typeof force === 'boolean' ? !force : !panel.hidden;
+  if (!panel.hidden) document.getElementById('sound-setting').focus();
+}
+
+function syncSensorySettings() {
+  document.getElementById('sound-setting').checked = state.settings.sound;
+  document.getElementById('vibration-setting').checked = state.settings.vibration;
+}
+
+document.getElementById('sound-setting').addEventListener('change', event => {
+  state.settings.sound = event.target.checked;
+  saveState();
+});
+document.getElementById('vibration-setting').addEventListener('change', event => {
+  state.settings.vibration = event.target.checked;
+  saveState();
+});
+
+async function recordTelemetry(event, details = {}) {
+  const record = { event, details, latency: state.latencies.at(-1) || 0, createdAt: new Date().toISOString() };
+  try {
+    const request = indexedDB.open('meghalaya-mornings', 1);
+    request.onupgradeneeded = () => request.result.createObjectStore('telemetry', { autoIncrement: true });
+    request.onsuccess = () => {
+      const db = request.result;
+      db.transaction('telemetry', 'readwrite').objectStore('telemetry').add(record);
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.ready.then(registration => registration.sync?.register('telemetry-sync')).catch(() => {});
+      }
+    };
+  } catch (error) {
+    localStorage.setItem('meghalaya-mornings-last-telemetry', JSON.stringify(record));
+  }
+}
+
+function registerOfflineSupport() {
+  if (!('serviceWorker' in navigator)) return;
+  navigator.serviceWorker.register('./sw.js').then(() => updateOfflineStatus('Offline-ready village')).catch(() => updateOfflineStatus('Local progress ready'));
+}
+
+loadState();
+registerOfflineSupport();
+window.addEventListener('online', () => updateOfflineStatus('Back online - queued data will sync'));
+window.addEventListener('offline', () => updateOfflineStatus('Offline mode - progress saved on this device', false));
+
+function syncStateToUI() {
+  document.getElementById('scoreVal').textContent = state.score;
+  document.getElementById('resourceCount').textContent = state.grains;
+  document.getElementById('dayCount').textContent = state.day;
+  state.tasksCompleted.forEach(task => {
+    const gameMap = { match: 0, story: 1, arrange: 2, build: 3 };
+    const chip = document.querySelectorAll('.task-chip')[gameMap[task]];
+    if (chip) chip.classList.add('completed');
+  });
+}
+
+function makeAccessibleControl(element) {
+  if (element.tagName !== 'BUTTON') {
+    element.tabIndex = 0;
+    element.setAttribute('role', 'button');
+  }
+  return element;
+}
+
+let forgivingPointer = null;
+let suppressNativeClickTarget = null;
+const forgivingSelectors = '.game-card, .task-chip, .nav-btn, .close-btn, .story-choice, .festival-item, .build-item, .build-slot, .upgrade-card, .hut, #complete-market';
+document.addEventListener('pointerdown', event => {
+  const target = event.target.closest(forgivingSelectors);
+  if (target) {
+    forgivingPointer = { target, x: event.clientX, y: event.clientY };
+    target.setPointerCapture?.(event.pointerId);
+  }
+});
+function releaseForgivingPointer(event) {
+  if (!forgivingPointer) return;
+  const distance = Math.hypot(event.clientX - forgivingPointer.x, event.clientY - forgivingPointer.y);
+  if (distance <= 40) {
+    event.preventDefault();
+    forgivingPointer.target.click();
+    suppressNativeClickTarget = forgivingPointer.target;
+  }
+  forgivingPointer = null;
+}
+document.addEventListener('pointerup', releaseForgivingPointer);
+document.addEventListener('pointercancel', releaseForgivingPointer);
+document.addEventListener('click', event => {
+  if (!suppressNativeClickTarget) return;
+  const target = event.target.closest(forgivingSelectors);
+  if (target !== suppressNativeClickTarget) return;
+  suppressNativeClickTarget = null;
+  event.preventDefault();
+  event.stopImmediatePropagation();
+}, true);
+document.addEventListener('keydown', event => {
+  const control = event.target.closest(forgivingSelectors);
+  if (control && (event.key === 'Enter' || event.key === ' ')) {
+    event.preventDefault();
+    control.click();
+  }
+});
+document.querySelectorAll(forgivingSelectors).forEach(makeAccessibleControl);
+
+// ─── FIREFLIES ───────────────────────────────────────────────
+function spawnFireflies() {
+  const scene = document.getElementById('scene');
+  for (let i = 0; i < 8; i++) {
+    const f = document.createElement('div');
+    f.className = 'firefly';
+    const x = 15 + Math.random() * 70;
+    const y = 30 + Math.random() * 40;
+    const tx = (Math.random() - 0.5) * 80 + 'px';
+    const ty = (Math.random() - 0.5) * 60 + 'px';
+    f.style.cssText = `left:${x}%;top:${y}%;--tx:${tx};--ty:${ty};animation-duration:${3+Math.random()*4}s;animation-delay:${-Math.random()*6}s`;
+    scene.appendChild(f);
+  }
+}
+spawnFireflies();
+
+// ─── TOAST ───────────────────────────────────────────────────
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+const guidePrompts = {
+  match: [
+    'Let’s look for two matching symbols. Pick the one that feels familiar and take your time.',
+    'Try to find the pair that looks the same. You do not need to rush.',
+    'Search for the matching picture. Small steps are still good progress.'
+  ],
+  story: [
+    'Listen to the story slowly. Choose the answer that feels most familiar to you.',
+    'Take a moment to remember the scene. The right answer will feel familiar.',
+    'Read the line carefully, then choose the option that makes the most sense.'
+  ],
+  arrange: [
+    'Start with the item you recognize first. The thali will come together one step at a time.',
+    'Pick the familiar object and place it carefully. You are doing well.',
+    'Look for the object that belongs in the prayer plate. One calm choice at a time.'
+  ],
+  build: [
+    'Choose one village piece and place it where it feels balanced and welcoming.',
+    'Start with the simple shape you recognize. The market is growing around you.',
+    'Pick a home or tree and place it gently. Your village is taking shape.'
+  ],
+  person: [
+    'Look at the face and match it to the familiar person in the village. A calm memory is still a strong memory.',
+    'Use the clue to find the familiar face. The answer may come more quickly when you slow down.',
+    'Think of who usually greets you here. That memory is worth trusting.'
+  ],
+  culture: [
+    'Think of the festival colors, lights, or prayers you know best. That memory is still there.',
+    'Choose the answer that feels most familiar from your celebrations and family memories.',
+    'Remember the bright lights and special prayers. The right answer usually feels warm and familiar.'
+  ],
+};
+
+function updateGuide(message) {
+  const guide = document.getElementById('guide-message');
+  if (guide) guide.textContent = message;
+}
+
+function guideAdvice() {
+  const completed = state.tasksCompleted.size;
+  const lastLatency = state.latencies.at(-1) || 0;
+  const baseMessages = [
+    'Start with the card game below. Tap two pictures that look the same.',
+    'Try the morning story next. Listen for the detail that feels familiar.',
+    'Choose Festival Culture to remember a light, prayer, or celebration.',
+    'You can begin with any picture below. I will guide you one choice at a time.'
+  ];
+  if (completed >= 6) return 'You have completed the village practice today. The memory game looks strong and steady.';
+  if (lastLatency > 7000) return 'Take your time. A slower answer is still a thoughtful answer, and I am right here to guide you.';
+  if (state.currentGame && guidePrompts[state.currentGame]) {
+    const options = guidePrompts[state.currentGame];
+    return options[Math.floor(Math.random() * options.length)];
+  }
+  if (completed > 0) return `You have finished ${completed} gentle task${completed === 1 ? '' : 's'} today. We can continue at your pace.`;
+  return baseMessages[Math.floor(Math.random() * baseMessages.length)];
+}
+
+function askGuide() {
+  const message = guideAdvice();
+  updateGuide(message);
+  recordTelemetry('guide-used', { task: state.currentGame || 'none', message });
+  toast('🌿 ' + message);
+}
+
+// ─── TAB SWITCHING ───────────────────────────────────────────
+function switchTab(tab) {
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('nav-'+tab).classList.add('active');
+  document.getElementById('play-tab').style.display    = tab === 'play'    ? 'block' : 'none';
+  document.getElementById('village-panel').style.display = tab === 'village' ? 'block' : 'none';
+  document.getElementById('metrics-panel').style.display = tab === 'metrics' ? 'block' : 'none';
+  if (tab === 'village') renderVillage();
+}
+
+// ─── TASK SELECTION ──────────────────────────────────────────
+function selectTask(el, gameId) {
+  if (el.classList.contains('completed')) return;
+  document.querySelectorAll('.task-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  startGame(gameId);
+}
+
+// ─── LATENCY TRACKING ────────────────────────────────────────
+function recordInteraction() {
+  if (!state.startTime) { state.startTime = Date.now(); return; }
+  const dt = Date.now() - state.startTime;
+  state.latencies.push(dt);
+  state.startTime = Date.now();
+  document.getElementById('latency-indicator').textContent = `⏱ ${dt}ms`;
+  updateGuide(guideAdvice());
+  recordTelemetry('interaction', { latency: dt });
+  saveState();
+}
+document.addEventListener('click', recordInteraction);
+
+// ─── SCORE UPDATER ───────────────────────────────────────────
+function addXP(amount) {
+  state.xp += amount;
+  state.score = Math.min(100, state.score + Math.floor(amount / 10));
+  state.grains += amount * 2;
+  document.getElementById('scoreVal').textContent = state.score;
+  document.getElementById('resourceCount').textContent = state.grains;
+  animateScore();
+  recordTelemetry('xp-earned', { amount });
+  saveState();
+}
+function animateScore() {
+  const el = document.getElementById('scoreVal');
+  el.style.transform = 'scale(1.3)';
+  el.style.color = '#FFD700';
+  setTimeout(() => { el.style.transform = ''; el.style.color = ''; }, 400);
+}
+
+// ─── GAME LAUNCHER ───────────────────────────────────────────
+function startGame(id) {
+  document.getElementById('game-panel').classList.add('active');
+  document.getElementById('game-cards').style.display = 'none';
+  ['match','story','arrange','build','person','culture'].forEach(g =>
+    document.getElementById(g+'-game').style.display = 'none'
+  );
+  document.getElementById(id+'-game').style.display = 'block';
+  state.startTime = Date.now();
+  state.currentGame = id;
+  updateGuide(guideAdvice());
+  if (id === 'match')   initMatch();
+  if (id === 'story')   initStory();
+  if (id === 'arrange') initArrange();
+  if (id === 'build')   initBuild();
+  if (id === 'person')  initPersonQuiz();
+  if (id === 'culture') initCultureQuiz();
+}
+
+function closeGame() {
+  document.getElementById('game-panel').classList.remove('active');
+  document.getElementById('game-cards').style.display = 'grid';
+  state.currentGame = null;
+  updateGuide(guideAdvice());
+}
+
+// ─── MEMORY MATCH GAME ───────────────────────────────────────
+const festivalSymbols = ['🪘','🌸','🏮','🎋','🥁','🌺'];
+let matchState = { cards: [], flipped: [], matched: 0 };
+
+function initMatch() {
+  matchState = { cards: [], flipped: [], matched: 0, lock: false };
+  const items = [...festivalSymbols, ...festivalSymbols]
+    .sort(() => Math.random() - 0.5);
+  const grid = document.getElementById('match-grid');
+  grid.innerHTML = '';
+  document.getElementById('matchCount').textContent = '0 / 6';
+  document.getElementById('matchProgress').style.width = '0%';
+
+  items.forEach((sym, i) => {
+    const card = document.createElement('div');
+    card.className = 'match-card hidden-face';
+    card.dataset.sym = sym;
+    card.dataset.idx = i;
+    card.onclick = () => flipCard(card, sym, i);
+    grid.appendChild(card);
+    matchState.cards.push({ el: card, sym, matched: false });
+  });
+}
+
+function flipCard(card, sym, idx) {
+  if (matchState.lock) return;
+  if (card.classList.contains('matched')) return;
+  if (matchState.flipped.length === 1 && matchState.flipped[0].idx === idx) return;
+
+  card.classList.remove('hidden-face');
+  card.classList.add('flipped');
+  card.textContent = sym;
+  matchState.flipped.push({ el: card, sym, idx });
+
+  if (matchState.flipped.length === 2) {
+    matchState.lock = true;
+    const [a, b] = matchState.flipped;
+    if (a.sym === b.sym) {
+      a.el.classList.add('matched');
+      b.el.classList.add('matched');
+      matchState.matched++;
+      const pct = (matchState.matched / 6) * 100;
+      document.getElementById('matchCount').textContent = `${matchState.matched} / 6`;
+      document.getElementById('matchProgress').style.width = pct + '%';
+      matchState.flipped = [];
+      matchState.lock = false;
+      toast('✨ Match found!');
+      completeSensoryFeedback();
+      if (matchState.matched === 6) {
+        setTimeout(() => {
+          toast('🎉 All matched! +30 XP');
+          addXP(30);
+          markTaskDone('match');
+        }, 500);
+      }
+    } else {
+      setTimeout(() => {
+        a.el.classList.remove('flipped');
+        b.el.classList.remove('flipped');
+        a.el.classList.add('hidden-face');
+        b.el.classList.add('hidden-face');
+        a.el.textContent = '';
+        b.el.textContent = '';
+        matchState.flipped = [];
+        matchState.lock = false;
+      }, 900);
+    }
+  }
+}
+
+// ─── STORY GAME ──────────────────────────────────────────────
+const stories = [
+  {
+    text: "Meghna crossed the river at dawn, her bamboo basket filled with marigolds for the Bihu celebration. The boatman Ramu asked which flower in NER is offered first at the fire altar. What did Meghna answer?",
+    choices: [
+      { text: "🌺 Marigold — the gold of Bihu", correct: true },
+      { text: "🌸 Cherry blossom — the pink of spring", correct: false },
+      { text: "🍀 Sacred fern from the hilltop", correct: false },
+    ]
+  },
+  {
+    text: "At the Hornbill Festival, grandfather pointed to the long house and said: 'This is where our tribe celebrates the new harvest.' What is the name for this communal house in Naga culture?",
+    choices: [
+      { text: "🏡 Morung — the youth's house", correct: true },
+      { text: "🏯 Rajbari — the king's palace", correct: false },
+      { text: "⛺ Chawkidar — the night shelter", correct: false },
+    ]
+  },
+  {
+    text: "The Bihu dance began and grandmother hummed along. The young dancers wore bright red and carried a specific musical instrument. Which instrument is most associated with Bihu?",
+    choices: [
+      { text: "🪘 Dhol — the barrel drum of Assam", correct: true },
+      { text: "🎺 Nagara — the royal trumpet", correct: false },
+      { text: "🎸 Dotara — the two-string lute", correct: false },
+    ]
+  }
+];
+let storyIdx = 0;
+
+function initStory() {
+  storyIdx = Math.floor(Math.random() * stories.length);
+  renderStory();
+}
+
+function renderStory() {
+  const s = stories[storyIdx];
+  document.getElementById('story-area').textContent = s.text;
+  const choiceEl = document.getElementById('story-choices');
+  choiceEl.innerHTML = '';
+  s.choices.sort(() => Math.random() - 0.5).forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'story-choice';
+    btn.textContent = c.text;
+    btn.onclick = () => answerStory(btn, c.correct, choiceEl);
+    choiceEl.appendChild(btn);
+  });
+}
+
+function answerStory(btn, correct, choiceEl) {
+  Array.from(choiceEl.children).forEach(b => b.onclick = null);
+  if (correct) {
+    btn.classList.add('correct');
+    toast('🌟 Correct! +25 XP');
+    completeSensoryFeedback(btn);
+    addXP(25);
+    markTaskDone('story');
+  } else {
+    btn.classList.add('wrong');
+    completeSensoryFeedback(btn, false);
+    // Show correct
+    Array.from(choiceEl.children).forEach(b => {
+      if (b !== btn) { b.style.opacity = '0.4'; }
+    });
+    toast('Not quite — the answer is highlighted');
+    addXP(5);
+  }
+}
+
+// ─── PERSON IDENTIFICATION GAME ─────────────────────────────
+const personMemoryPrompts = [
+  {
+    emoji: '👵',
+    clue: 'Who is this?',
+    options: [{ emoji: '👵', label: 'Dadi' }, { emoji: '👧', label: 'Aanya' }, { emoji: '👨‍🌾', label: 'Ramu' }, { emoji: '🧑‍🎨', label: 'Kiran' }],
+    correct: 'Dadi'
+  },
+  {
+    emoji: '👨‍🌾',
+    clue: 'Who is this?',
+    options: [{ emoji: '👨‍🌾', label: 'Ramu' }, { emoji: '👩‍🍳', label: 'Sita' }, { emoji: '🧑‍💼', label: 'Nikhil' }, { emoji: '👴', label: 'Boro' }],
+    correct: 'Ramu'
+  },
+  {
+    emoji: '👧',
+    clue: 'Who is this?',
+    options: [{ emoji: '👧', label: 'Aanya' }, { emoji: '👦', label: 'Karan' }, { emoji: '👵', label: 'Dadi' }, { emoji: '🐄', label: 'Gopal' }],
+    correct: 'Aanya'
+  }
+];
+
+function initPersonQuiz() {
+  const prompt = personMemoryPrompts[Math.floor(Math.random() * personMemoryPrompts.length)];
+  const clueEl = document.getElementById('person-clue');
+  clueEl.innerHTML = `<div style="font-size:42px; margin-bottom:8px">${prompt.emoji}</div><div style="font-size:14px; color:rgba(245,230,200,0.75)">${prompt.clue}</div>`;
+  const list = document.getElementById('person-options');
+  list.innerHTML = '';
+  [...prompt.options].sort(() => Math.random() - 0.5).forEach(option => {
+    const btn = document.createElement('button');
+    btn.className = 'story-choice';
+    btn.innerHTML = `<span style="font-size:26px; display:block; margin-bottom:4px">${option.emoji}</span><span>${option.label}</span>`;
+    btn.onclick = () => answerPersonChoice(btn, option.label, prompt.correct, list);
+    list.appendChild(btn);
+  });
+}
+
+function answerPersonChoice(btn, selected, correct, list) {
+  Array.from(list.children).forEach(b => b.onclick = null);
+  if (selected === correct) {
+    btn.classList.add('correct');
+    toast('✅ Correct!');
+    addXP(35);
+    markTaskDone('person');
+  } else {
+    btn.classList.add('wrong');
+    Array.from(list.children).forEach(b => {
+      if (b.textContent.trim() === correct) b.classList.add('correct');
+      else b.style.opacity = '0.45';
+    });
+    toast('Good try');
+    addXP(10);
+  }
+}
+
+// ─── HINDU FESTIVAL CULTURE RECALL ──────────────────────────
+const cultureQuestions = [
+  {
+    visual: '🪔✨',
+    question: 'Which festival is this?',
+    options: [{ emoji: '🪔', label: 'Diwali' }, { emoji: '🌼', label: 'Holi' }, { emoji: '🎉', label: 'Navratri' }, { emoji: '🎂', label: 'Birthday' }],
+    correct: 'Diwali'
+  },
+  {
+    visual: '🎉💃',
+    question: 'Which festival is this?',
+    options: [{ emoji: '🎉', label: 'Navratri' }, { emoji: '🎇', label: 'Raksha Bandhan' }, { emoji: '🥭', label: 'Mango Day' }, { emoji: '🌧️', label: 'Rain Day' }],
+    correct: 'Navratri'
+  },
+  {
+    visual: '🎨🌈',
+    question: 'What is this festival about?',
+    options: [{ emoji: '🎨', label: 'Colors and play' }, { emoji: '🥻', label: 'Only clothes' }, { emoji: '🧁', label: 'Only sweets' }, { emoji: '🏕️', label: 'Camping' }],
+    correct: 'Colors and play'
+  }
+];
+
+function initCultureQuiz() {
+  const question = cultureQuestions[Math.floor(Math.random() * cultureQuestions.length)];
+  document.getElementById('culture-question').innerHTML = `<div style="font-size:40px; margin-bottom:8px">${question.visual}</div><div style="font-size:14px; color:rgba(245,230,200,0.72)">${question.question}</div>`;
+  const list = document.getElementById('culture-options');
+  list.innerHTML = '';
+  [...question.options].sort(() => Math.random() - 0.5).forEach(option => {
+    const btn = document.createElement('button');
+    btn.className = 'story-choice';
+    btn.innerHTML = `<span style="font-size:26px; display:block; margin-bottom:4px">${option.emoji}</span><span>${option.label}</span>`;
+    btn.onclick = () => answerCultureChoice(btn, option.label, question.correct, list);
+    list.appendChild(btn);
+  });
+}
+
+function answerCultureChoice(btn, selected, correct, list) {
+  Array.from(list.children).forEach(b => b.onclick = null);
+  if (selected === correct) {
+    btn.classList.add('correct');
+    toast('🌺 Great!');
+    addXP(30);
+    markTaskDone('culture');
+  } else {
+    btn.classList.add('wrong');
+    Array.from(list.children).forEach(b => {
+      if (b.textContent.trim() === correct) b.classList.add('correct');
+      else b.style.opacity = '0.45';
+    });
+    toast('Nice try');
+    addXP(8);
+  }
+}
+
+// ─── FESTIVAL ARRANGE ─────────────────────────────────────────
+const pujaItems = [
+  { emoji:'🌸', name:'Flower', correct:true },
+  { emoji:'🪔', name:'Lamp',   correct:true },
+  { emoji:'🍚', name:'Rice',   correct:true },
+  { emoji:'🍌', name:'Banana', correct:true },
+  { emoji:'🕯️', name:'Incense',correct:true },
+  { emoji:'🧢', name:'Hat',    correct:false },
+  { emoji:'📱', name:'Phone',  correct:false },
+  { emoji:'🔧', name:'Wrench', correct:false },
+];
+
+let arrangeState = { placed: 0 };
+
+function initArrange() {
+  arrangeState = { placed: 0 };
+  const shelf = document.getElementById('item-shelf');
+  const zone  = document.getElementById('festival-zone');
+  shelf.innerHTML = '';
+  zone.innerHTML  = '<div class="thali-placeholder" style="color:rgba(245,230,200,0.3);font-size:13px">Drop festival items here</div>';
+
+  pujaItems.sort(() => Math.random() - 0.5).forEach(item => {
+    const el = document.createElement('div');
+    el.className = 'festival-item';
+    makeAccessibleControl(el);
+    el.textContent = item.emoji;
+    el.title = item.name;
+    el.draggable = true;
+    el.dataset.correct = item.correct;
+    el.dataset.name = item.name;
+
+    el.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('emoji', item.emoji);
+      e.dataTransfer.setData('correct', item.correct);
+      e.dataTransfer.setData('name', item.name);
+    });
+
+    // Touch fallback
+    el.addEventListener('click', () => tapPlaceItem(el, item));
+    shelf.appendChild(el);
+  });
+
+  const zone2 = document.getElementById('festival-zone');
+  zone2.ondragover = e => { e.preventDefault(); zone2.classList.add('drag-over'); };
+  zone2.ondragleave = () => zone2.classList.remove('drag-over');
+  zone2.ondrop = e => {
+    e.preventDefault();
+    zone2.classList.remove('drag-over');
+    const correct = e.dataTransfer.getData('correct') === 'true';
+    const emoji   = e.dataTransfer.getData('emoji');
+    const name    = e.dataTransfer.getData('name');
+    placeOnThali(emoji, correct, name);
+  };
+}
+
+function tapPlaceItem(el, item) {
+  if (el.classList.contains('placed')) return;
+  el.classList.add('placed');
+  placeOnThali(item.emoji, item.correct, item.name);
+}
+
+function placeOnThali(emoji, correct, name) {
+  const zone = document.getElementById('festival-zone');
+  // Clear placeholder
+  const placeholder = zone.querySelector('.thali-placeholder');
+  if (placeholder) placeholder.remove();
+  const el = document.createElement('div');
+  el.className = 'thali-item';
+  el.style.cssText = 'font-size:32px;padding:8px;border-radius:10px;animation:pulse-match 0.3s ease';
+  el.textContent = emoji;
+  if (correct) {
+    el.style.background = 'rgba(107,170,117,0.2)';
+    el.style.border = '1.5px solid var(--leaf)';
+    arrangeState.placed++;
+    zone.appendChild(el);
+    setTimeout(() => completeSensoryFeedback(el), 0);
+    toast(`✓ ${name} added to thali`);
+    if (arrangeState.placed === 5) {
+      setTimeout(() => { toast('🏮 Perfect thali! +20 XP'); addXP(20); markTaskDone('arrange'); }, 600);
+    }
+  } else {
+    el.style.background = 'rgba(192,57,43,0.2)';
+    el.style.border = '1.5px solid var(--festival)';
+    zone.appendChild(el);
+    setTimeout(() => el.remove(), 1200);
+    toast(`✗ ${name} doesn't belong here`);
+  }
+}
+
+// ─── VILLAGE BUILDER ─────────────────────────────────────────
+const buildPieces = ['🏠','🛖','⛺','🪵','🌿','🪴','🌳','🌻','💧'];
+
+function initBuild() {
+  if (!state.buildGrid.some(Boolean)) state.buildGrid = Array(15).fill(null);
+  state.selectedTool = null;
+
+  const palette = document.getElementById('build-palette');
+  palette.innerHTML = '';
+  buildPieces.forEach(p => {
+    const el = document.createElement('div');
+    el.className = 'build-item';
+    makeAccessibleControl(el);
+    el.textContent = p;
+    el.onclick = () => {
+      document.querySelectorAll('.build-item').forEach(b => b.classList.remove('selected-tool'));
+      el.classList.add('selected-tool');
+      state.selectedTool = p;
+    };
+    palette.appendChild(el);
+  });
+
+  const grid = document.getElementById('builder-area');
+  grid.innerHTML = '';
+  for (let i = 0; i < 15; i++) {
+    const slot = document.createElement('div');
+    slot.className = 'build-slot';
+    makeAccessibleControl(slot);
+    slot.dataset.idx = i;
+    if (state.buildGrid[i]) {
+      slot.textContent = state.buildGrid[i];
+      slot.classList.add('filled');
+    }
+    slot.onclick = () => placeBuilding(slot, i);
+    grid.appendChild(slot);
+  }
+}
+
+function placeBuilding(slot, idx) {
+  if (!state.selectedTool) { toast('Pick a building piece first!'); return; }
+  state.buildGrid[idx] = state.selectedTool;
+  slot.textContent = state.selectedTool;
+  slot.classList.add('filled');
+  completeSensoryFeedback(slot);
+  recordTelemetry('building-placed', { piece: state.selectedTool, slot: idx });
+  saveState();
+}
+
+function submitBuild() {
+  const filled = state.buildGrid.filter(Boolean).length;
+  if (filled < 5) { toast('Place at least 5 buildings first!'); return; }
+  toast(`🏗️ Market built! +40 XP`);
+  completeSensoryFeedback();
+  addXP(40);
+  markTaskDone('build');
+  // Animate scene
+  document.getElementById('scene').style.filter = 'brightness(1.2)';
+  setTimeout(() => document.getElementById('scene').style.filter = '', 800);
+}
+
+// ─── TASK COMPLETION ─────────────────────────────────────────
+function markTaskDone(id) {
+  state.tasksCompleted.add(id);
+  const gameMap = { match:0, story:1, arrange:2, build:3, person:4, culture:5 };
+  const chips = document.querySelectorAll('.task-chip');
+  const target = chips[gameMap[id]];
+  if (target) {
+    target.classList.add('completed');
+    target.classList.remove('active');
+  }
+  recordTelemetry('task-completed', { task: id });
+  saveState();
+  updateGuide(guideAdvice());
+  setTimeout(closeGame, 1500);
+  if (state.tasksCompleted.size >= 6) {
+    setTimeout(() => toast('🎊 All tasks done today! Village grows!'), 2000);
+    document.getElementById('dayCount').textContent = ++state.day;
+  }
+}
+
+// ─── VILLAGE UPGRADES ────────────────────────────────────────
+const upgrades = [
+  { emoji:'🎪', name:'Festival Tent', detail:'Unlock Bihu & Hornbill mini-events', cost:100, bought:false },
+  { emoji:'🪺', name:'Weaver\'s Loom', detail:'Reveals patterns of NER textiles', cost:200, bought:false },
+  { emoji:'⛵', name:'River Ferry',    detail:'Cross to the next village and meet elders', cost:300, bought:false },
+  { emoji:'🌾', name:'Paddy Field',   detail:'Harvest mini-game — test counting skills', cost:150, bought:false },
+  { emoji:'🏮', name:'Lantern Gate',  detail:'Festival night mode unlocked', cost:400, bought:false },
+  { emoji:'�', name:'Memory Garden', detail:'Gentle sound and calm reminder space', cost:120, bought:true },
+  { emoji:'🌊', name:'Sacred River',  detail:'Meditation mode between sessions', cost:500, bought:false },
+];
+if (Array.isArray(state.savedUpgrades)) upgrades.forEach((upgrade, index) => { upgrade.bought = Boolean(state.savedUpgrades[index]); });
+
+function renderVillage() {
+  const list = document.getElementById('upgrade-list');
+  list.innerHTML = '';
+  upgrades.forEach((u, i) => {
+    const el = document.createElement('div');
+    el.className = 'upgrade-card' + (u.bought ? ' bought' : '');
+    el.innerHTML = `
+      <div class="emoji">${u.emoji}</div>
+      <div class="info">
+        <div class="name">${u.name}</div>
+        <div class="detail">${u.detail}</div>
+      </div>
+      <div class="cost">${u.bought ? '✓ Built' : '🌾 '+u.cost}</div>
+    `;
+    if (!u.bought) {
+      el.onclick = () => buyUpgrade(i, el, u);
+    }
+    list.appendChild(el);
+  });
+}
+
+function buyUpgrade(i, el, u) {
+  if (state.grains < u.cost) {
+    toast(`Need ${u.cost - state.grains} more grains`);
+    return;
+  }
+  state.grains -= u.cost;
+  upgrades[i].bought = true;
+  document.getElementById('resourceCount').textContent = state.grains;
+  toast(`✅ ${u.name} added to your village!`);
+  completeSensoryFeedback(el);
+  recordTelemetry('upgrade-bought', { name: u.name, cost: u.cost });
+  saveState();
+  renderVillage();
+}
+
+// ─── INITIAL TAB ─────────────────────────────────────────────
+syncStateToUI();
+syncSensorySettings();
+switchTab('play');
+document.getElementById('village-panel').style.display = 'none';
+document.getElementById('metrics-panel').style.display = 'none';
+document.getElementById('play-tab').style.display = 'block';
+
+// Auto-start first task hint
+setTimeout(() => toast('👆 Tap a task chip or game card to begin'), 1200);
+
+    // Function to send telemetry to Kushal's backend
+    async function sendTelemetryToBackend(interaction, drift, latency) {
+        const telemetryData = {
+            session_id: 1, // You can make this dynamic later
+            interaction_type: interaction, 
+            touch_drift_value: drift, 
+            hesitation_latency_ms: latency 
+        };
+
+        try {
+            // Note: Make sure Kushal's backend is running on this exact IP/Port
+            const response = await fetch('http://127.0.0.1:8000/api/v1/telemetry/log', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(telemetryData)
+            });
+            const result = await response.json();
+            console.log("Success! Backend says:", result);
+        } catch (error) {
+            console.error("Failed to reach Kushal's backend:", error);
+        }
+    }
+</script>
+<button onclick="sendTelemetryToBackend('test_click', 2.5, 800)">
+    Test Connection to Backend
+</button>
+</body>
+</html>

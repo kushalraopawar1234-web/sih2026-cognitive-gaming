@@ -1,0 +1,91 @@
+{
+  "dataset_metadata": {
+    "name": "NER Cultural Reminiscence Reference Dataset",
+    "version": "0.1.0",
+    "review_status": "candidate entries for human review before production use",
+    "scope": "Conservative, high-level references for reminiscence prompts; not a complete cultural encyclopedia.",
+    "review_guidance": "A cultural subject-matter reviewer should verify spelling, regional fit, language choice, and local sensitivities before release.",
+    "sources_to_verify": [
+      "Official state tourism and culture department publications",
+      "Government of India cultural and tourism publications",
+      "Local cultural institutions and community reviewers",
+      "Academic or museum references"
+    ]
+  },
+  "regions": {
+    "Assam": {
+      "languages": ["Assamese", "Bodo", "Bengali", "English"],
+      "festivals": [
+        {"name": "Bihu", "notes": "A group of Assamese seasonal festivals; Rongali/Bohag Bihu is widely associated with spring and the agricultural calendar."}
+      ],
+      "traditional_foods": ["pitha", "laru", "khar", "masor tenga"],
+      "cultural_activities": ["Bihu songs and dance", "weaving", "community celebrations", "agricultural activities"],
+      "reminiscence_themes": ["family celebrations", "seasonal change", "music and dance", "home cooking", "school and village life"]
+    },
+    "Meghalaya": {
+      "languages": ["Khasi", "Garo", "Jaintia/Pnar", "English"],
+      "festivals": [
+        {"name": "Wangala", "notes": "A harvest festival associated especially with the Garo community."}
+      ],
+      "traditional_foods": ["jadoh", "dohneiihong", "pumaloi", "tungrymbai"],
+      "cultural_activities": ["Wangala drumming and dance", "traditional music", "weaving", "community feasts"],
+      "reminiscence_themes": ["harvest memories", "community gatherings", "rain and hills", "family meals", "traditional music"]
+    },
+    "Manipur": {
+      "languages": ["Meitei (Manipuri)", "Tangkhul", "Thadou-Kuki", "English"],
+      "festivals": [
+        {"name": "Yaoshang", "notes": "A spring festival widely observed in Manipur."}
+      ],
+      "traditional_foods": ["eromba", "singju", "chamthong/kangshoi", "paknam"],
+      "cultural_activities": ["Manipuri dance", "traditional sports", "folk music", "community festival visits"],
+      "reminiscence_themes": ["spring celebrations", "neighborhood games", "dance and music", "family visits", "local markets"]
+    },
+    "Mizoram": {
+      "languages": ["Mizo", "English"],
+      "festivals": [
+        {"name": "Chapchar Kut", "notes": "A major Mizo spring festival."}
+      ],
+      "traditional_foods": ["bai", "sawhchiar", "smoked meat", "bamboo shoot dishes"],
+      "cultural_activities": ["Cheraw bamboo dance", "Mizo folk songs", "community celebrations", "traditional weaving"],
+      "reminiscence_themes": ["spring festival memories", "village community life", "music and dance", "family meals", "handcrafts"]
+    },
+    "Nagaland": {
+      "languages": ["Nagamese", "English", "Ao", "Angami", "Sumi", "Lotha"],
+      "festivals": [
+        {"name": "Hornbill Festival", "notes": "A cultural festival in Nagaland that presents traditions and performances from Naga communities."}
+      ],
+      "traditional_foods": ["smoked pork", "axone/akhuni dishes", "bamboo shoot dishes", "zutho"],
+      "cultural_activities": ["folk songs and dances", "weaving", "craft demonstrations", "community gatherings"],
+      "reminiscence_themes": ["village traditions", "music and performance", "weaving and crafts", "family recipes", "community events"]
+    },
+    "Tripura": {
+      "languages": ["Bengali", "Kokborok", "English"],
+      "festivals": [
+        {"name": "Garia Puja", "notes": "A festival observed by Tripura's indigenous communities, associated with Garia."}
+      ],
+      "traditional_foods": ["mui borok dishes", "chakhwi", "bamboo shoot preparations", "berma-based dishes"],
+      "cultural_activities": ["Hojagiri dance", "Garia-related community observances", "bamboo and cane craft", "weaving"],
+      "reminiscence_themes": ["community rituals", "dance", "bamboo craft", "childhood games", "family cooking"]
+    },
+    "Arunachal Pradesh": {
+      "languages": ["English", "Hindi", "Nyishi", "Adi", "Monpa", "Apatani"],
+      "festivals": [
+        {"name": "Losar", "notes": "A New Year festival observed in Buddhist communities, including Monpa communities."},
+        {"name": "Solung", "notes": "An important festival associated with the Adi community."}
+      ],
+      "traditional_foods": ["thukpa", "momos", "smoked meat", "apong"],
+      "cultural_activities": ["community dances", "weaving", "bamboo and cane craft", "village gatherings"],
+      "reminiscence_themes": ["mountain and village life", "family festivals", "crafts", "traditional food", "community songs"]
+    },
+    "Sikkim": {
+      "languages": ["Nepali", "Sikkimese/Bhutia", "Lepcha", "English"],
+      "festivals": [
+        {"name": "Losar", "notes": "A Tibetan Buddhist New Year festival observed in Sikkim."},
+        {"name": "Pang Lhabsol", "notes": "A Sikkim festival associated with Mount Khangchendzonga and cultural observance."}
+      ],
+      "traditional_foods": ["momos", "thukpa", "gundruk", "kinema"],
+      "cultural_activities": ["masked dances", "weaving", "Buddhist monastery visits", "community celebrations"],
+      "reminiscence_themes": ["mountain landscapes", "festivals and monasteries", "family meals", "music and dance", "school memories"]
+    }
+  }
+}

@@ -1,0 +1,1773 @@
+{
+  "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+  "sessions": [
+    {
+      "session_id": "U001_S001",
+      "user_id": "U001",
+      "timestamp": "2026-07-01 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 19.55,
+        "response_latency": 1135.08,
+        "decision_speed": 3.29,
+        "mistakes": 4,
+        "mistake_rate": 0.0209,
+        "completion_rate": 0.8731,
+        "session_duration": 629.8,
+        "engagement_score": 0.5775
+      },
+      "baseline_available": false,
+      "baseline": null,
+      "baseline_deltas_pct": null,
+      "behavioral_score": 0.4371,
+      "score_method": "raw_normalized",
+      "indicator": "[No baseline \u2014 raw score] Behavioral pattern within expected range",
+      "trend": "Stable",
+      "top_contributing_factors": [
+        "decision speed (normalized value: 0.60)",
+        "response latency (normalized value: 0.56)",
+        "engagement / completion (normalized value: 0.53)"
+      ],
+      "explanation": "Insufficient history: 0 previous session(s) available (minimum required: 3).",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U001_S002",
+      "user_id": "U001",
+      "timestamp": "2026-07-03 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 22.26,
+        "response_latency": 1260.86,
+        "decision_speed": 3.69,
+        "mistakes": 6,
+        "mistake_rate": 0.0335,
+        "completion_rate": 0.8917,
+        "session_duration": 660.63,
+        "engagement_score": 0.6187
+      },
+      "baseline_available": false,
+      "baseline": null,
+      "baseline_deltas_pct": null,
+      "behavioral_score": 0.8414,
+      "score_method": "raw_normalized",
+      "indicator": "[No baseline \u2014 raw score] Notable behavioral change detected",
+      "trend": "Stable",
+      "top_contributing_factors": [
+        "response latency (normalized value: 1.00)",
+        "decision speed (normalized value: 1.00)",
+        "mistake rate (normalized value: 1.00)"
+      ],
+      "explanation": "Insufficient history: 1 previous session(s) available (minimum required: 3).",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U001_S003",
+      "user_id": "U001",
+      "timestamp": "2026-07-05 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 21.45,
+        "response_latency": 1081.97,
+        "decision_speed": 2.73,
+        "mistakes": 4,
+        "mistake_rate": 0.022,
+        "completion_rate": 0.8519,
+        "session_duration": 496.5,
+        "engagement_score": 0.4442
+      },
+      "baseline_available": false,
+      "baseline": null,
+      "baseline_deltas_pct": null,
+      "behavioral_score": 0.281,
+      "score_method": "raw_normalized",
+      "indicator": "[No baseline \u2014 raw score] Behavioral pattern within expected range",
+      "trend": "Stable",
+      "top_contributing_factors": [
+        "engagement / completion (normalized value: 1.00)",
+        "mistake rate (normalized value: 0.55)",
+        "response latency (normalized value: 0.37)"
+      ],
+      "explanation": "Insufficient history: 2 previous session(s) available (minimum required: 3).",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U001_S004",
+      "user_id": "U001",
+      "timestamp": "2026-07-07 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 22.83,
+        "response_latency": 1033.93,
+        "decision_speed": 3.11,
+        "mistakes": 4,
+        "mistake_rate": 0.018,
+        "completion_rate": 0.8225,
+        "session_duration": 689.22,
+        "engagement_score": 0.5953
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 21.0867,
+        "response_latency": 1159.3033,
+        "decision_speed": 3.2367,
+        "mistake_rate": 0.0255,
+        "engagement_score": 0.5468
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 8.27,
+        "response_latency": -10.81,
+        "decision_speed": -3.91,
+        "mistake_rate": -29.32,
+        "engagement_score": 8.87
+      },
+      "behavioral_score": 0.3891,
+      "score_method": "baseline_delta",
+      "indicator": "Behavioral pattern within expected range",
+      "trend": "Stable",
+      "top_contributing_factors": [
+        "mistake rate decreased by 29.3% vs personal baseline",
+        "response latency decreased by 10.8% vs personal baseline",
+        "engagement / completion improved by 8.9% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (3 previous sessions): response latency decreased by 10.8% vs personal baseline; mistake rate decreased by 29.3% vs personal baseline.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U001_S005",
+      "user_id": "U001",
+      "timestamp": "2026-07-09 00:00:00",
+      "game_type": "pattern_recall",
+      "metrics": {
+        "touch_drift": 19.38,
+        "response_latency": 1055.0,
+        "decision_speed": 3.06,
+        "mistakes": 4,
+        "mistake_rate": 0.0186,
+        "completion_rate": 0.959,
+        "session_duration": 656.93,
+        "engagement_score": 0.6616
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 21.5225,
+        "response_latency": 1127.96,
+        "decision_speed": 3.205,
+        "mistake_rate": 0.0236,
+        "engagement_score": 0.5589
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": -9.95,
+        "response_latency": -6.47,
+        "decision_speed": -4.52,
+        "mistake_rate": -21.19,
+        "engagement_score": 18.37
+      },
+      "behavioral_score": 0.36,
+      "score_method": "baseline_delta",
+      "indicator": "Behavioral pattern within expected range",
+      "trend": "Stable",
+      "top_contributing_factors": [
+        "mistake rate decreased by 21.2% vs personal baseline",
+        "engagement / completion improved by 18.4% vs personal baseline",
+        "touch drift decreased by 9.9% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (4 previous sessions): mistake rate decreased by 21.2% vs personal baseline; engagement score improved by 18.4%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U001_S006",
+      "user_id": "U001",
+      "timestamp": "2026-07-11 00:00:00",
+      "game_type": "pattern_recall",
+      "metrics": {
+        "touch_drift": 23.94,
+        "response_latency": 989.0,
+        "decision_speed": 2.69,
+        "mistakes": 3,
+        "mistake_rate": 0.0117,
+        "completion_rate": 0.8909,
+        "session_duration": 691.45,
+        "engagement_score": 0.6469
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 21.094,
+        "response_latency": 1113.368,
+        "decision_speed": 3.176,
+        "mistake_rate": 0.0226,
+        "engagement_score": 0.5795
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 13.49,
+        "response_latency": -11.17,
+        "decision_speed": -15.3,
+        "mistake_rate": -48.23,
+        "engagement_score": 11.64
+      },
+      "behavioral_score": 0.3258,
+      "score_method": "baseline_delta",
+      "indicator": "Behavioral pattern within expected range",
+      "trend": "Stable",
+      "top_contributing_factors": [
+        "mistake rate decreased by 48.2% vs personal baseline",
+        "decision speed decreased by 15.3% vs personal baseline",
+        "touch drift increased by 13.5% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (5 previous sessions): touch drift increased by 13.5% vs personal baseline; response latency decreased by 11.2% vs personal baseline; decision speed decreased by 15.3% vs personal baseline; mistake rate decreased by 48.2% vs personal baseline; engagement score improved by 11.6%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U001_S007",
+      "user_id": "U001",
+      "timestamp": "2026-07-13 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 22.71,
+        "response_latency": 1057.64,
+        "decision_speed": 2.98,
+        "mistakes": 2,
+        "mistake_rate": 0.0081,
+        "completion_rate": 0.9335,
+        "session_duration": 740.44,
+        "engagement_score": 0.7259
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 21.5683,
+        "response_latency": 1092.64,
+        "decision_speed": 3.095,
+        "mistake_rate": 0.0208,
+        "engagement_score": 0.5907
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 5.29,
+        "response_latency": -3.2,
+        "decision_speed": -3.72,
+        "mistake_rate": -61.03,
+        "engagement_score": 22.89
+      },
+      "behavioral_score": 0.3087,
+      "score_method": "baseline_delta",
+      "indicator": "Behavioral pattern within expected range",
+      "trend": "Stable",
+      "top_contributing_factors": [
+        "mistake rate decreased by 61.0% vs personal baseline",
+        "engagement / completion improved by 22.9% vs personal baseline",
+        "touch drift increased by 5.3% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (6 previous sessions): mistake rate decreased by 61.0% vs personal baseline; engagement score improved by 22.9%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U001_S008",
+      "user_id": "U001",
+      "timestamp": "2026-07-15 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 24.05,
+        "response_latency": 1007.69,
+        "decision_speed": 3.1,
+        "mistakes": 4,
+        "mistake_rate": 0.0195,
+        "completion_rate": 0.9315,
+        "session_duration": 636.7,
+        "engagement_score": 0.6229
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 21.7314,
+        "response_latency": 1087.64,
+        "decision_speed": 3.0786,
+        "mistake_rate": 0.019,
+        "engagement_score": 0.61
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 10.67,
+        "response_latency": -7.35,
+        "decision_speed": 0.7,
+        "mistake_rate": 2.79,
+        "engagement_score": 2.11
+      },
+      "behavioral_score": 0.5085,
+      "score_method": "baseline_delta",
+      "indicator": "Moderate behavioral variation detected",
+      "trend": "Stable",
+      "top_contributing_factors": [
+        "touch drift increased by 10.7% vs personal baseline",
+        "response latency decreased by 7.3% vs personal baseline",
+        "mistake rate increased by 2.8% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (7 previous sessions): touch drift increased by 10.7% vs personal baseline.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U001_S009",
+      "user_id": "U001",
+      "timestamp": "2026-07-17 00:00:00",
+      "game_type": "pattern_recall",
+      "metrics": {
+        "touch_drift": 25.23,
+        "response_latency": 976.37,
+        "decision_speed": 3.5,
+        "mistakes": 2,
+        "mistake_rate": 0.0118,
+        "completion_rate": 0.9382,
+        "session_duration": 589.91,
+        "engagement_score": 0.5812
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 22.0213,
+        "response_latency": 1077.6462,
+        "decision_speed": 3.0812,
+        "mistake_rate": 0.019,
+        "engagement_score": 0.6116
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 14.57,
+        "response_latency": -9.4,
+        "decision_speed": 13.59,
+        "mistake_rate": -38.02,
+        "engagement_score": -4.97
+      },
+      "behavioral_score": 0.4554,
+      "score_method": "baseline_delta",
+      "indicator": "Moderate behavioral variation detected",
+      "trend": "Stable",
+      "top_contributing_factors": [
+        "mistake rate decreased by 38.0% vs personal baseline",
+        "touch drift increased by 14.6% vs personal baseline",
+        "decision speed increased by 13.6% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (8 previous sessions): touch drift increased by 14.6% vs personal baseline; decision speed increased by 13.6% vs personal baseline; mistake rate decreased by 38.0% vs personal baseline.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U001_S010",
+      "user_id": "U001",
+      "timestamp": "2026-07-19 00:00:00",
+      "game_type": "pattern_recall",
+      "metrics": {
+        "touch_drift": 21.83,
+        "response_latency": 1207.03,
+        "decision_speed": 3.45,
+        "mistakes": 4,
+        "mistake_rate": 0.0196,
+        "completion_rate": 0.8281,
+        "session_duration": 703.59,
+        "engagement_score": 0.6119
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 22.3778,
+        "response_latency": 1066.3933,
+        "decision_speed": 3.1278,
+        "mistake_rate": 0.0182,
+        "engagement_score": 0.6082
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": -2.45,
+        "response_latency": 13.19,
+        "decision_speed": 10.3,
+        "mistake_rate": 7.5,
+        "engagement_score": 0.6
+      },
+      "behavioral_score": 0.5778,
+      "score_method": "baseline_delta",
+      "indicator": "Moderate behavioral variation detected",
+      "trend": "Stable",
+      "top_contributing_factors": [
+        "response latency increased by 13.2% vs personal baseline",
+        "decision speed increased by 10.3% vs personal baseline",
+        "mistake rate increased by 7.5% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (9 previous sessions): response latency increased by 13.2% vs personal baseline; decision speed increased by 10.3% vs personal baseline.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U001_S011",
+      "user_id": "U001",
+      "timestamp": "2026-07-21 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 20.65,
+        "response_latency": 1136.62,
+        "decision_speed": 2.76,
+        "mistakes": 4,
+        "mistake_rate": 0.02,
+        "completion_rate": 0.8378,
+        "session_duration": 553.22,
+        "engagement_score": 0.4868
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 22.323,
+        "response_latency": 1080.457,
+        "decision_speed": 3.16,
+        "mistake_rate": 0.0184,
+        "engagement_score": 0.6086
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": -7.49,
+        "response_latency": 5.2,
+        "decision_speed": -12.66,
+        "mistake_rate": 8.87,
+        "engagement_score": -20.01
+      },
+      "behavioral_score": 0.5255,
+      "score_method": "baseline_delta",
+      "indicator": "Moderate behavioral variation detected",
+      "trend": "Stable",
+      "top_contributing_factors": [
+        "engagement / completion declined by 20.0% vs personal baseline",
+        "decision speed decreased by 12.7% vs personal baseline",
+        "mistake rate increased by 8.9% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (10 previous sessions): decision speed decreased by 12.7% vs personal baseline; engagement score declined by 20.0%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U001_S012",
+      "user_id": "U001",
+      "timestamp": "2026-07-23 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 23.28,
+        "response_latency": 1132.74,
+        "decision_speed": 2.87,
+        "mistakes": 2,
+        "mistake_rate": 0.0099,
+        "completion_rate": 0.9697,
+        "session_duration": 583.15,
+        "engagement_score": 0.5939
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 22.1709,
+        "response_latency": 1085.5627,
+        "decision_speed": 3.1236,
+        "mistake_rate": 0.0185,
+        "engagement_score": 0.5975
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 5.0,
+        "response_latency": 4.35,
+        "decision_speed": -8.12,
+        "mistake_rate": -46.54,
+        "engagement_score": -0.61
+      },
+      "behavioral_score": 0.3923,
+      "score_method": "baseline_delta",
+      "indicator": "Behavioral pattern within expected range",
+      "trend": "Stable",
+      "top_contributing_factors": [
+        "mistake rate decreased by 46.5% vs personal baseline",
+        "decision speed decreased by 8.1% vs personal baseline",
+        "touch drift increased by 5.0% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (11 previous sessions): mistake rate decreased by 46.5% vs personal baseline.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U002_S001",
+      "user_id": "U002",
+      "timestamp": "2026-07-01 00:00:00",
+      "game_type": "pattern_recall",
+      "metrics": {
+        "touch_drift": 37.11,
+        "response_latency": 2050.17,
+        "decision_speed": 5.15,
+        "mistakes": 8,
+        "mistake_rate": 0.0762,
+        "completion_rate": 0.7572,
+        "session_duration": 543.17,
+        "engagement_score": 0.4319
+      },
+      "baseline_available": false,
+      "baseline": null,
+      "baseline_deltas_pct": null,
+      "behavioral_score": 0.8818,
+      "score_method": "raw_normalized",
+      "indicator": "[No baseline \u2014 raw score] Notable behavioral change detected",
+      "trend": "Improving",
+      "top_contributing_factors": [
+        "touch drift (normalized value: 1.00)",
+        "response latency (normalized value: 1.00)",
+        "decision speed (normalized value: 1.00)"
+      ],
+      "explanation": "Insufficient history: 0 previous session(s) available (minimum required: 3).",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U002_S002",
+      "user_id": "U002",
+      "timestamp": "2026-07-03 00:00:00",
+      "game_type": "pattern_recall",
+      "metrics": {
+        "touch_drift": 35.09,
+        "response_latency": 1441.49,
+        "decision_speed": 4.22,
+        "mistakes": 7,
+        "mistake_rate": 0.0473,
+        "completion_rate": 0.7071,
+        "session_duration": 622.64,
+        "engagement_score": 0.4624
+      },
+      "baseline_available": false,
+      "baseline": null,
+      "baseline_deltas_pct": null,
+      "behavioral_score": 0.5662,
+      "score_method": "raw_normalized",
+      "indicator": "[No baseline \u2014 raw score] Moderate behavioral variation detected",
+      "trend": "Improving",
+      "top_contributing_factors": [
+        "touch drift (normalized value: 0.89)",
+        "decision speed (normalized value: 0.54)",
+        "response latency (normalized value: 0.37)"
+      ],
+      "explanation": "Insufficient history: 1 previous session(s) available (minimum required: 3).",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U002_S003",
+      "user_id": "U002",
+      "timestamp": "2026-07-05 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 30.2,
+        "response_latency": 1482.11,
+        "decision_speed": 4.52,
+        "mistakes": 9,
+        "mistake_rate": 0.1,
+        "completion_rate": 0.7373,
+        "session_duration": 408.83,
+        "engagement_score": 0.3166
+      },
+      "baseline_available": false,
+      "baseline": null,
+      "baseline_deltas_pct": null,
+      "behavioral_score": 0.5696,
+      "score_method": "raw_normalized",
+      "indicator": "[No baseline \u2014 raw score] Moderate behavioral variation detected",
+      "trend": "Improving",
+      "top_contributing_factors": [
+        "mistake rate (normalized value: 1.00)",
+        "engagement / completion (normalized value: 1.00)",
+        "decision speed (normalized value: 0.69)"
+      ],
+      "explanation": "Insufficient history: 2 previous session(s) available (minimum required: 3).",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U002_S004",
+      "user_id": "U002",
+      "timestamp": "2026-07-07 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 29.65,
+        "response_latency": 1713.11,
+        "decision_speed": 3.86,
+        "mistakes": 7,
+        "mistake_rate": 0.0429,
+        "completion_rate": 0.7192,
+        "session_duration": 629.09,
+        "engagement_score": 0.4752
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 34.1333,
+        "response_latency": 1657.9233,
+        "decision_speed": 4.63,
+        "mistake_rate": 0.0745,
+        "engagement_score": 0.4036
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": -13.13,
+        "response_latency": 3.33,
+        "decision_speed": -16.63,
+        "mistake_rate": -42.42,
+        "engagement_score": 17.73
+      },
+      "behavioral_score": 0.3072,
+      "score_method": "baseline_delta",
+      "indicator": "Behavioral pattern within expected range",
+      "trend": "Improving",
+      "top_contributing_factors": [
+        "mistake rate decreased by 42.4% vs personal baseline",
+        "engagement / completion improved by 17.7% vs personal baseline",
+        "decision speed decreased by 16.6% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (3 previous sessions): touch drift decreased by 13.1% vs personal baseline; decision speed decreased by 16.6% vs personal baseline; mistake rate decreased by 42.4% vs personal baseline; engagement score improved by 17.7%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U002_S005",
+      "user_id": "U002",
+      "timestamp": "2026-07-09 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 27.78,
+        "response_latency": 1541.25,
+        "decision_speed": 4.18,
+        "mistakes": 4,
+        "mistake_rate": 0.032,
+        "completion_rate": 0.6704,
+        "session_duration": 522.78,
+        "engagement_score": 0.3681
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 33.0125,
+        "response_latency": 1671.72,
+        "decision_speed": 4.4375,
+        "mistake_rate": 0.0666,
+        "engagement_score": 0.4215
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": -15.85,
+        "response_latency": -7.8,
+        "decision_speed": -5.8,
+        "mistake_rate": -51.95,
+        "engagement_score": -12.67
+      },
+      "behavioral_score": 0.3233,
+      "score_method": "baseline_delta",
+      "indicator": "Behavioral pattern within expected range",
+      "trend": "Improving",
+      "top_contributing_factors": [
+        "mistake rate decreased by 52.0% vs personal baseline",
+        "touch drift decreased by 15.8% vs personal baseline",
+        "engagement / completion declined by 12.7% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (4 previous sessions): touch drift decreased by 15.8% vs personal baseline; mistake rate decreased by 52.0% vs personal baseline; engagement score declined by 12.7%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U002_S006",
+      "user_id": "U002",
+      "timestamp": "2026-07-11 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 30.91,
+        "response_latency": 1762.67,
+        "decision_speed": 4.62,
+        "mistakes": 5,
+        "mistake_rate": 0.0397,
+        "completion_rate": 0.5951,
+        "session_duration": 582.62,
+        "engagement_score": 0.3641
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 31.966,
+        "response_latency": 1645.626,
+        "decision_speed": 4.386,
+        "mistake_rate": 0.0597,
+        "engagement_score": 0.4108
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": -3.3,
+        "response_latency": 7.11,
+        "decision_speed": 5.34,
+        "mistake_rate": -33.48,
+        "engagement_score": -11.38
+      },
+      "behavioral_score": 0.465,
+      "score_method": "baseline_delta",
+      "indicator": "Moderate behavioral variation detected",
+      "trend": "Improving",
+      "top_contributing_factors": [
+        "mistake rate decreased by 33.5% vs personal baseline",
+        "engagement / completion declined by 11.4% vs personal baseline",
+        "response latency increased by 7.1% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (5 previous sessions): mistake rate decreased by 33.5% vs personal baseline; engagement score declined by 11.4%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U002_S007",
+      "user_id": "U002",
+      "timestamp": "2026-07-13 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 24.37,
+        "response_latency": 1354.36,
+        "decision_speed": 4.07,
+        "mistakes": 7,
+        "mistake_rate": 0.0522,
+        "completion_rate": 0.7587,
+        "session_duration": 544.18,
+        "engagement_score": 0.4336
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 31.79,
+        "response_latency": 1665.1333,
+        "decision_speed": 4.425,
+        "mistake_rate": 0.0564,
+        "engagement_score": 0.4031
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": -23.34,
+        "response_latency": -18.66,
+        "decision_speed": -8.02,
+        "mistake_rate": -7.36,
+        "engagement_score": 7.58
+      },
+      "behavioral_score": 0.3369,
+      "score_method": "baseline_delta",
+      "indicator": "Behavioral pattern within expected range",
+      "trend": "Improving",
+      "top_contributing_factors": [
+        "touch drift decreased by 23.3% vs personal baseline",
+        "response latency decreased by 18.7% vs personal baseline",
+        "decision speed decreased by 8.0% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (6 previous sessions): touch drift decreased by 23.3% vs personal baseline; response latency decreased by 18.7% vs personal baseline.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U002_S008",
+      "user_id": "U002",
+      "timestamp": "2026-07-15 00:00:00",
+      "game_type": "pattern_recall",
+      "metrics": {
+        "touch_drift": 23.93,
+        "response_latency": 1076.8,
+        "decision_speed": 3.34,
+        "mistakes": 5,
+        "mistake_rate": 0.0262,
+        "completion_rate": 0.7595,
+        "session_duration": 639.13,
+        "engagement_score": 0.5098
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 30.73,
+        "response_latency": 1620.7371,
+        "decision_speed": 4.3743,
+        "mistake_rate": 0.0558,
+        "engagement_score": 0.4074
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": -22.13,
+        "response_latency": -33.56,
+        "decision_speed": -23.64,
+        "mistake_rate": -53.01,
+        "engagement_score": 25.13
+      },
+      "behavioral_score": 0.1686,
+      "score_method": "baseline_delta",
+      "indicator": "Behavioral pattern within expected range",
+      "trend": "Improving",
+      "top_contributing_factors": [
+        "mistake rate decreased by 53.0% vs personal baseline",
+        "response latency decreased by 33.6% vs personal baseline",
+        "engagement / completion improved by 25.1% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (7 previous sessions): touch drift decreased by 22.1% vs personal baseline; response latency decreased by 33.6% vs personal baseline; decision speed decreased by 23.6% vs personal baseline; mistake rate decreased by 53.0% vs personal baseline; engagement score improved by 25.1%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U002_S009",
+      "user_id": "U002",
+      "timestamp": "2026-07-17 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 18.68,
+        "response_latency": 1375.75,
+        "decision_speed": 3.12,
+        "mistakes": 5,
+        "mistake_rate": 0.0318,
+        "completion_rate": 0.7234,
+        "session_duration": 488.35,
+        "engagement_score": 0.371
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 29.88,
+        "response_latency": 1552.745,
+        "decision_speed": 4.245,
+        "mistake_rate": 0.0521,
+        "engagement_score": 0.4202
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": -37.48,
+        "response_latency": -11.4,
+        "decision_speed": -26.5,
+        "mistake_rate": -38.92,
+        "engagement_score": -11.71
+      },
+      "behavioral_score": 0.2528,
+      "score_method": "baseline_delta",
+      "indicator": "Behavioral pattern within expected range",
+      "trend": "Improving",
+      "top_contributing_factors": [
+        "mistake rate decreased by 38.9% vs personal baseline",
+        "touch drift decreased by 37.5% vs personal baseline",
+        "decision speed decreased by 26.5% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (8 previous sessions): touch drift decreased by 37.5% vs personal baseline; response latency decreased by 11.4% vs personal baseline; decision speed decreased by 26.5% vs personal baseline; mistake rate decreased by 38.9% vs personal baseline; engagement score declined by 11.7%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U002_S010",
+      "user_id": "U002",
+      "timestamp": "2026-07-19 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 18.04,
+        "response_latency": 1081.69,
+        "decision_speed": 3.4,
+        "mistakes": 3,
+        "mistake_rate": 0.0176,
+        "completion_rate": 0.6887,
+        "session_duration": 576.81,
+        "engagement_score": 0.4172
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 28.6356,
+        "response_latency": 1533.0789,
+        "decision_speed": 4.12,
+        "mistake_rate": 0.0498,
+        "engagement_score": 0.4147
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": -37.0,
+        "response_latency": -29.44,
+        "decision_speed": -17.48,
+        "mistake_rate": -64.67,
+        "engagement_score": 0.59
+      },
+      "behavioral_score": 0.1731,
+      "score_method": "baseline_delta",
+      "indicator": "Behavioral pattern within expected range",
+      "trend": "Improving",
+      "top_contributing_factors": [
+        "mistake rate decreased by 64.7% vs personal baseline",
+        "touch drift decreased by 37.0% vs personal baseline",
+        "response latency decreased by 29.4% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (9 previous sessions): touch drift decreased by 37.0% vs personal baseline; response latency decreased by 29.4% vs personal baseline; decision speed decreased by 17.5% vs personal baseline; mistake rate decreased by 64.7% vs personal baseline.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U003_S001",
+      "user_id": "U003",
+      "timestamp": "2026-07-01 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 20.52,
+        "response_latency": 1078.18,
+        "decision_speed": 2.63,
+        "mistakes": 4,
+        "mistake_rate": 0.0181,
+        "completion_rate": 0.8897,
+        "session_duration": 580.53,
+        "engagement_score": 0.5424
+      },
+      "baseline_available": false,
+      "baseline": null,
+      "baseline_deltas_pct": null,
+      "behavioral_score": 0.0909,
+      "score_method": "raw_normalized",
+      "indicator": "[No baseline \u2014 raw score] Behavioral pattern within expected range",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "engagement / completion (normalized value: 0.61)",
+        "mistake rate (normalized value: 0.13)",
+        "touch drift (normalized value: 0.03)"
+      ],
+      "explanation": "Insufficient history: 0 previous session(s) available (minimum required: 3).",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U003_S002",
+      "user_id": "U003",
+      "timestamp": "2026-07-03 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 21.9,
+        "response_latency": 1091.07,
+        "decision_speed": 2.94,
+        "mistakes": 4,
+        "mistake_rate": 0.0226,
+        "completion_rate": 0.866,
+        "session_duration": 520.77,
+        "engagement_score": 0.4736
+      },
+      "baseline_available": false,
+      "baseline": null,
+      "baseline_deltas_pct": null,
+      "behavioral_score": 0.0915,
+      "score_method": "raw_normalized",
+      "indicator": "[No baseline \u2014 raw score] Behavioral pattern within expected range",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "engagement / completion (normalized value: 1.00)",
+        "mistake rate (normalized value: 0.21)",
+        "touch drift (normalized value: 0.13)"
+      ],
+      "explanation": "Insufficient history: 1 previous session(s) available (minimum required: 3).",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U003_S003",
+      "user_id": "U003",
+      "timestamp": "2026-07-05 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 20.08,
+        "response_latency": 1193.53,
+        "decision_speed": 3.01,
+        "mistakes": 2,
+        "mistake_rate": 0.0111,
+        "completion_rate": 0.8453,
+        "session_duration": 540.88,
+        "engagement_score": 0.4802
+      },
+      "baseline_available": false,
+      "baseline": null,
+      "baseline_deltas_pct": null,
+      "behavioral_score": 0.0803,
+      "score_method": "raw_normalized",
+      "indicator": "[No baseline \u2014 raw score] Behavioral pattern within expected range",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "engagement / completion (normalized value: 0.96)",
+        "response latency (normalized value: 0.21)",
+        "decision speed (normalized value: 0.11)"
+      ],
+      "explanation": "Insufficient history: 2 previous session(s) available (minimum required: 3).",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U003_S004",
+      "user_id": "U003",
+      "timestamp": "2026-07-07 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 26.48,
+        "response_latency": 1077.62,
+        "decision_speed": 3.55,
+        "mistakes": 4,
+        "mistake_rate": 0.022,
+        "completion_rate": 0.9212,
+        "session_duration": 647.23,
+        "engagement_score": 0.6262
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 20.8333,
+        "response_latency": 1120.9267,
+        "decision_speed": 2.86,
+        "mistake_rate": 0.0173,
+        "engagement_score": 0.4987
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 27.1,
+        "response_latency": -3.86,
+        "decision_speed": 24.13,
+        "mistake_rate": 27.41,
+        "engagement_score": 25.56
+      },
+      "behavioral_score": 0.6333,
+      "score_method": "baseline_delta",
+      "indicator": "Moderate behavioral variation detected",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "mistake rate increased by 27.4% vs personal baseline",
+        "touch drift increased by 27.1% vs personal baseline",
+        "engagement / completion improved by 25.6% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (3 previous sessions): touch drift increased by 27.1% vs personal baseline; decision speed increased by 24.1% vs personal baseline; mistake rate increased by 27.4% vs personal baseline; engagement score improved by 25.6%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U003_S005",
+      "user_id": "U003",
+      "timestamp": "2026-07-09 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 26.31,
+        "response_latency": 1342.57,
+        "decision_speed": 3.66,
+        "mistakes": 5,
+        "mistake_rate": 0.0352,
+        "completion_rate": 0.936,
+        "session_duration": 520.89,
+        "engagement_score": 0.512
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 22.245,
+        "response_latency": 1110.1,
+        "decision_speed": 3.0325,
+        "mistake_rate": 0.0184,
+        "engagement_score": 0.5306
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 18.27,
+        "response_latency": 20.94,
+        "decision_speed": 20.69,
+        "mistake_rate": 90.79,
+        "engagement_score": -3.51
+      },
+      "behavioral_score": 0.83,
+      "score_method": "baseline_delta",
+      "indicator": "Notable behavioral change detected",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "mistake rate increased by 90.8% vs personal baseline",
+        "response latency increased by 20.9% vs personal baseline",
+        "decision speed increased by 20.7% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (4 previous sessions): touch drift increased by 18.3% vs personal baseline; response latency increased by 20.9% vs personal baseline; decision speed increased by 20.7% vs personal baseline; mistake rate increased by 90.8% vs personal baseline.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U003_S006",
+      "user_id": "U003",
+      "timestamp": "2026-07-11 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 22.76,
+        "response_latency": 1492.38,
+        "decision_speed": 3.98,
+        "mistakes": 2,
+        "mistake_rate": 0.0116,
+        "completion_rate": 0.8998,
+        "session_duration": 687.21,
+        "engagement_score": 0.6494
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 23.058,
+        "response_latency": 1156.594,
+        "decision_speed": 3.158,
+        "mistake_rate": 0.0218,
+        "engagement_score": 0.5269
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": -1.29,
+        "response_latency": 29.03,
+        "decision_speed": 26.03,
+        "mistake_rate": -46.79,
+        "engagement_score": 23.25
+      },
+      "behavioral_score": 0.492,
+      "score_method": "baseline_delta",
+      "indicator": "Moderate behavioral variation detected",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "mistake rate decreased by 46.8% vs personal baseline",
+        "response latency increased by 29.0% vs personal baseline",
+        "decision speed increased by 26.0% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (5 previous sessions): response latency increased by 29.0% vs personal baseline; decision speed increased by 26.0% vs personal baseline; mistake rate decreased by 46.8% vs personal baseline; engagement score improved by 23.2%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U003_S007",
+      "user_id": "U003",
+      "timestamp": "2026-07-13 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 28.05,
+        "response_latency": 1460.69,
+        "decision_speed": 3.81,
+        "mistakes": 6,
+        "mistake_rate": 0.0382,
+        "completion_rate": 0.9095,
+        "session_duration": 599.31,
+        "engagement_score": 0.5724
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 23.0083,
+        "response_latency": 1212.5583,
+        "decision_speed": 3.295,
+        "mistake_rate": 0.0201,
+        "engagement_score": 0.5473
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 21.91,
+        "response_latency": 20.46,
+        "decision_speed": 15.63,
+        "mistake_rate": 90.05,
+        "engagement_score": 4.59
+      },
+      "behavioral_score": 0.8172,
+      "score_method": "baseline_delta",
+      "indicator": "Notable behavioral change detected",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "mistake rate increased by 90.0% vs personal baseline",
+        "touch drift increased by 21.9% vs personal baseline",
+        "response latency increased by 20.5% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (6 previous sessions): touch drift increased by 21.9% vs personal baseline; response latency increased by 20.5% vs personal baseline; decision speed increased by 15.6% vs personal baseline; mistake rate increased by 90.0% vs personal baseline.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U003_S008",
+      "user_id": "U003",
+      "timestamp": "2026-07-15 00:00:00",
+      "game_type": "pattern_recall",
+      "metrics": {
+        "touch_drift": 26.09,
+        "response_latency": 1444.59,
+        "decision_speed": 4.32,
+        "mistakes": 2,
+        "mistake_rate": 0.0133,
+        "completion_rate": 0.9107,
+        "session_duration": 646.62,
+        "engagement_score": 0.6184
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 23.7286,
+        "response_latency": 1248.0057,
+        "decision_speed": 3.3686,
+        "mistake_rate": 0.0227,
+        "engagement_score": 0.5509
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 9.95,
+        "response_latency": 15.75,
+        "decision_speed": 28.24,
+        "mistake_rate": -41.37,
+        "engagement_score": 12.26
+      },
+      "behavioral_score": 0.5183,
+      "score_method": "baseline_delta",
+      "indicator": "Moderate behavioral variation detected",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "mistake rate decreased by 41.4% vs personal baseline",
+        "decision speed increased by 28.2% vs personal baseline",
+        "response latency increased by 15.8% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (7 previous sessions): response latency increased by 15.8% vs personal baseline; decision speed increased by 28.2% vs personal baseline; mistake rate decreased by 41.4% vs personal baseline; engagement score improved by 12.3%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U003_S009",
+      "user_id": "U003",
+      "timestamp": "2026-07-17 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 32.32,
+        "response_latency": 1563.0,
+        "decision_speed": 4.79,
+        "mistakes": 3,
+        "mistake_rate": 0.0234,
+        "completion_rate": 0.8596,
+        "session_duration": 613.86,
+        "engagement_score": 0.5542
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 24.0238,
+        "response_latency": 1272.5787,
+        "decision_speed": 3.4875,
+        "mistake_rate": 0.0215,
+        "engagement_score": 0.5593
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 34.53,
+        "response_latency": 22.82,
+        "decision_speed": 37.35,
+        "mistake_rate": 8.77,
+        "engagement_score": -0.92
+      },
+      "behavioral_score": 0.75,
+      "score_method": "baseline_delta",
+      "indicator": "Notable behavioral change detected",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "decision speed increased by 37.4% vs personal baseline",
+        "touch drift increased by 34.5% vs personal baseline",
+        "response latency increased by 22.8% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (8 previous sessions): touch drift increased by 34.5% vs personal baseline; response latency increased by 22.8% vs personal baseline; decision speed increased by 37.4% vs personal baseline.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U003_S010",
+      "user_id": "U003",
+      "timestamp": "2026-07-19 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 34.27,
+        "response_latency": 1619.32,
+        "decision_speed": 6.21,
+        "mistakes": 7,
+        "mistake_rate": 0.0654,
+        "completion_rate": 0.9258,
+        "session_duration": 663.23,
+        "engagement_score": 0.6448
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 24.9456,
+        "response_latency": 1304.8478,
+        "decision_speed": 3.6322,
+        "mistake_rate": 0.0217,
+        "engagement_score": 0.5588
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 37.38,
+        "response_latency": 24.1,
+        "decision_speed": 70.97,
+        "mistake_rate": 201.07,
+        "engagement_score": 15.4
+      },
+      "behavioral_score": 0.9063,
+      "score_method": "baseline_delta",
+      "indicator": "Notable behavioral change detected",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "mistake rate increased by 201.1% vs personal baseline",
+        "decision speed increased by 71.0% vs personal baseline",
+        "touch drift increased by 37.4% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (9 previous sessions): touch drift increased by 37.4% vs personal baseline; response latency increased by 24.1% vs personal baseline; decision speed increased by 71.0% vs personal baseline; mistake rate increased by 201.1% vs personal baseline; engagement score improved by 15.4%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U003_S011",
+      "user_id": "U003",
+      "timestamp": "2026-07-21 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 31.37,
+        "response_latency": 1562.11,
+        "decision_speed": 4.42,
+        "mistakes": 5,
+        "mistake_rate": 0.0391,
+        "completion_rate": 0.8936,
+        "session_duration": 566.64,
+        "engagement_score": 0.5318
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 25.878,
+        "response_latency": 1336.295,
+        "decision_speed": 3.89,
+        "mistake_rate": 0.0261,
+        "engagement_score": 0.5674
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 21.22,
+        "response_latency": 16.9,
+        "decision_speed": 13.62,
+        "mistake_rate": 49.87,
+        "engagement_score": -6.27
+      },
+      "behavioral_score": 0.7513,
+      "score_method": "baseline_delta",
+      "indicator": "Notable behavioral change detected",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "mistake rate increased by 49.9% vs personal baseline",
+        "touch drift increased by 21.2% vs personal baseline",
+        "response latency increased by 16.9% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (10 previous sessions): touch drift increased by 21.2% vs personal baseline; response latency increased by 16.9% vs personal baseline; decision speed increased by 13.6% vs personal baseline; mistake rate increased by 49.9% vs personal baseline.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U004_S001",
+      "user_id": "U004",
+      "timestamp": "2026-07-01 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 25.66,
+        "response_latency": 1946.13,
+        "decision_speed": 4.13,
+        "mistakes": 5,
+        "mistake_rate": 0.0338,
+        "completion_rate": 0.7553,
+        "session_duration": 612.28,
+        "engagement_score": 0.4857
+      },
+      "baseline_available": false,
+      "baseline": null,
+      "baseline_deltas_pct": null,
+      "behavioral_score": 0.5312,
+      "score_method": "raw_normalized",
+      "indicator": "[No baseline \u2014 raw score] Moderate behavioral variation detected",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "response latency (normalized value: 1.00)",
+        "decision speed (normalized value: 0.76)",
+        "engagement / completion (normalized value: 0.60)"
+      ],
+      "explanation": "Insufficient history: 0 previous session(s) available (minimum required: 3).",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U004_S002",
+      "user_id": "U004",
+      "timestamp": "2026-07-03 00:00:00",
+      "game_type": "pattern_recall",
+      "metrics": {
+        "touch_drift": 22.92,
+        "response_latency": 1538.14,
+        "decision_speed": 2.72,
+        "mistakes": 7,
+        "mistake_rate": 0.0244,
+        "completion_rate": 0.7924,
+        "session_duration": 781.56,
+        "engagement_score": 0.6504
+      },
+      "baseline_available": false,
+      "baseline": null,
+      "baseline_deltas_pct": null,
+      "behavioral_score": 0.3342,
+      "score_method": "raw_normalized",
+      "indicator": "[No baseline \u2014 raw score] Behavioral pattern within expected range",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "response latency (normalized value: 0.63)",
+        "engagement / completion (normalized value: 0.27)",
+        "decision speed (normalized value: 0.26)"
+      ],
+      "explanation": "Insufficient history: 1 previous session(s) available (minimum required: 3).",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U004_S003",
+      "user_id": "U004",
+      "timestamp": "2026-07-05 00:00:00",
+      "game_type": "pattern_recall",
+      "metrics": {
+        "touch_drift": 23.84,
+        "response_latency": 847.19,
+        "decision_speed": 3.73,
+        "mistakes": 5,
+        "mistake_rate": 0.0617,
+        "completion_rate": 0.8891,
+        "session_duration": 301.41,
+        "engagement_score": 0.2814
+      },
+      "baseline_available": false,
+      "baseline": null,
+      "baseline_deltas_pct": null,
+      "behavioral_score": 0.2663,
+      "score_method": "raw_normalized",
+      "indicator": "[No baseline \u2014 raw score] Behavioral pattern within expected range",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "engagement / completion (normalized value: 1.00)",
+        "decision speed (normalized value: 0.62)",
+        "mistake rate (normalized value: 0.60)"
+      ],
+      "explanation": "Insufficient history: 2 previous session(s) available (minimum required: 3).",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U004_S004",
+      "user_id": "U004",
+      "timestamp": "2026-07-07 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 44.46,
+        "response_latency": 1728.34,
+        "decision_speed": 2.56,
+        "mistakes": 8,
+        "mistake_rate": 0.0276,
+        "completion_rate": 0.8633,
+        "session_duration": 741.81,
+        "engagement_score": 0.6726
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 24.14,
+        "response_latency": 1443.82,
+        "decision_speed": 3.5267,
+        "mistake_rate": 0.04,
+        "engagement_score": 0.4725
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 84.18,
+        "response_latency": 19.71,
+        "decision_speed": -27.41,
+        "mistake_rate": -30.94,
+        "engagement_score": 42.35
+      },
+      "behavioral_score": 0.5466,
+      "score_method": "baseline_delta",
+      "indicator": "Moderate behavioral variation detected",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "touch drift increased by 84.2% vs personal baseline",
+        "engagement / completion improved by 42.4% vs personal baseline",
+        "mistake rate decreased by 30.9% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (3 previous sessions): touch drift increased by 84.2% vs personal baseline; response latency increased by 19.7% vs personal baseline; decision speed decreased by 27.4% vs personal baseline; mistake rate decreased by 30.9% vs personal baseline; engagement score improved by 42.4%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U004_S005",
+      "user_id": "U004",
+      "timestamp": "2026-07-09 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 33.81,
+        "response_latency": 1200.77,
+        "decision_speed": 1.98,
+        "mistakes": 8,
+        "mistake_rate": 0.0301,
+        "completion_rate": 0.835,
+        "session_duration": 527.36,
+        "engagement_score": 0.4625
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 29.22,
+        "response_latency": 1514.95,
+        "decision_speed": 3.285,
+        "mistake_rate": 0.0369,
+        "engagement_score": 0.5225
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 15.71,
+        "response_latency": -20.74,
+        "decision_speed": -39.73,
+        "mistake_rate": -18.37,
+        "engagement_score": -11.49
+      },
+      "behavioral_score": 0.355,
+      "score_method": "baseline_delta",
+      "indicator": "Behavioral pattern within expected range",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "decision speed decreased by 39.7% vs personal baseline",
+        "response latency decreased by 20.7% vs personal baseline",
+        "mistake rate decreased by 18.4% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (4 previous sessions): touch drift increased by 15.7% vs personal baseline; response latency decreased by 20.7% vs personal baseline; decision speed decreased by 39.7% vs personal baseline; mistake rate decreased by 18.4% vs personal baseline; engagement score declined by 11.5%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U004_S006",
+      "user_id": "U004",
+      "timestamp": "2026-07-11 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 28.79,
+        "response_latency": 1198.36,
+        "decision_speed": 4.26,
+        "mistakes": 8,
+        "mistake_rate": 0.0404,
+        "completion_rate": 0.7285,
+        "session_duration": 844.86,
+        "engagement_score": 0.6464
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 30.138,
+        "response_latency": 1452.114,
+        "decision_speed": 3.024,
+        "mistake_rate": 0.0355,
+        "engagement_score": 0.5105
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": -4.47,
+        "response_latency": -17.47,
+        "decision_speed": 40.87,
+        "mistake_rate": 13.74,
+        "engagement_score": 26.62
+      },
+      "behavioral_score": 0.5208,
+      "score_method": "baseline_delta",
+      "indicator": "Moderate behavioral variation detected",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "decision speed increased by 40.9% vs personal baseline",
+        "engagement / completion improved by 26.6% vs personal baseline",
+        "response latency decreased by 17.5% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (5 previous sessions): response latency decreased by 17.5% vs personal baseline; decision speed increased by 40.9% vs personal baseline; mistake rate increased by 13.7% vs personal baseline; engagement score improved by 26.6%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U004_S007",
+      "user_id": "U004",
+      "timestamp": "2026-07-13 00:00:00",
+      "game_type": "pattern_recall",
+      "metrics": {
+        "touch_drift": 30.56,
+        "response_latency": 1565.51,
+        "decision_speed": 4.37,
+        "mistakes": 8,
+        "mistake_rate": 0.0367,
+        "completion_rate": 0.7899,
+        "session_duration": 952.2,
+        "engagement_score": 0.7899
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 29.9133,
+        "response_latency": 1409.8217,
+        "decision_speed": 3.23,
+        "mistake_rate": 0.0363,
+        "engagement_score": 0.5332
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 2.16,
+        "response_latency": 11.04,
+        "decision_speed": 35.29,
+        "mistake_rate": 1.01,
+        "engagement_score": 48.15
+      },
+      "behavioral_score": 0.5403,
+      "score_method": "baseline_delta",
+      "indicator": "Moderate behavioral variation detected",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "engagement / completion improved by 48.1% vs personal baseline",
+        "decision speed increased by 35.3% vs personal baseline",
+        "response latency increased by 11.0% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (6 previous sessions): response latency increased by 11.0% vs personal baseline; decision speed increased by 35.3% vs personal baseline; engagement score improved by 48.1%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U004_S008",
+      "user_id": "U004",
+      "timestamp": "2026-07-15 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 33.85,
+        "response_latency": 1719.04,
+        "decision_speed": 4.82,
+        "mistakes": 8,
+        "mistake_rate": 0.087,
+        "completion_rate": 0.8102,
+        "session_duration": 444.84,
+        "engagement_score": 0.3785
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 30.0057,
+        "response_latency": 1432.0629,
+        "decision_speed": 3.3929,
+        "mistake_rate": 0.0364,
+        "engagement_score": 0.5698
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": 12.81,
+        "response_latency": 20.04,
+        "decision_speed": 42.06,
+        "mistake_rate": 139.1,
+        "engagement_score": -33.58
+      },
+      "behavioral_score": 0.8861,
+      "score_method": "baseline_delta",
+      "indicator": "Notable behavioral change detected",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "mistake rate increased by 139.1% vs personal baseline",
+        "decision speed increased by 42.1% vs personal baseline",
+        "engagement / completion declined by 33.6% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (7 previous sessions): touch drift increased by 12.8% vs personal baseline; response latency increased by 20.0% vs personal baseline; decision speed increased by 42.1% vs personal baseline; mistake rate increased by 139.1% vs personal baseline; engagement score declined by 33.6%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U004_S009",
+      "user_id": "U004",
+      "timestamp": "2026-07-17 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 21.04,
+        "response_latency": 1366.67,
+        "decision_speed": 3.86,
+        "mistakes": 7,
+        "mistake_rate": 0.0355,
+        "completion_rate": 0.7727,
+        "session_duration": 759.1,
+        "engagement_score": 0.616
+      },
+      "baseline_available": true,
+      "baseline": {
+        "touch_drift": 30.4862,
+        "response_latency": 1467.935,
+        "decision_speed": 3.5712,
+        "mistake_rate": 0.0427,
+        "engagement_score": 0.5459
+      },
+      "baseline_deltas_pct": {
+        "touch_drift": -30.99,
+        "response_latency": -6.9,
+        "decision_speed": 8.09,
+        "mistake_rate": -16.89,
+        "engagement_score": 12.84
+      },
+      "behavioral_score": 0.3588,
+      "score_method": "baseline_delta",
+      "indicator": "Behavioral pattern within expected range",
+      "trend": "Changing",
+      "top_contributing_factors": [
+        "touch drift decreased by 31.0% vs personal baseline",
+        "mistake rate decreased by 16.9% vs personal baseline",
+        "engagement / completion improved by 12.8% vs personal baseline"
+      ],
+      "explanation": "Compared to personal baseline (8 previous sessions): touch drift decreased by 31.0% vs personal baseline; mistake rate decreased by 16.9% vs personal baseline; engagement score improved by 12.8%.",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U005_S001",
+      "user_id": "U005",
+      "timestamp": "2026-07-01 00:00:00",
+      "game_type": "memory_match",
+      "metrics": {
+        "touch_drift": 27.76,
+        "response_latency": 1436.01,
+        "decision_speed": 5.01,
+        "mistakes": 6,
+        "mistake_rate": 0.0513,
+        "completion_rate": 0.7553,
+        "session_duration": 585.02,
+        "engagement_score": 0.464
+      },
+      "baseline_available": false,
+      "baseline": null,
+      "baseline_deltas_pct": null,
+      "behavioral_score": 0.85,
+      "score_method": "raw_normalized",
+      "indicator": "[No baseline \u2014 raw score] Notable behavioral change detected",
+      "trend": "Insufficient Data",
+      "top_contributing_factors": [
+        "touch drift (normalized value: 1.00)",
+        "response latency (normalized value: 1.00)",
+        "decision speed (normalized value: 1.00)"
+      ],
+      "explanation": "Insufficient history: 0 previous session(s) available (minimum required: 3).",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    },
+    {
+      "session_id": "U005_S002",
+      "user_id": "U005",
+      "timestamp": "2026-07-03 00:00:00",
+      "game_type": "color_sort",
+      "metrics": {
+        "touch_drift": 27.44,
+        "response_latency": 1178.22,
+        "decision_speed": 3.84,
+        "mistakes": 8,
+        "mistake_rate": 0.0437,
+        "completion_rate": 0.8076,
+        "session_duration": 704.58,
+        "engagement_score": 0.5976
+      },
+      "baseline_available": false,
+      "baseline": null,
+      "baseline_deltas_pct": null,
+      "behavioral_score": 0.15,
+      "score_method": "raw_normalized",
+      "indicator": "[No baseline \u2014 raw score] Behavioral pattern within expected range",
+      "trend": "Insufficient Data",
+      "top_contributing_factors": [
+        "touch drift (normalized value: 0.00)",
+        "response latency (normalized value: 0.00)",
+        "decision speed (normalized value: 0.00)"
+      ],
+      "explanation": "Insufficient history: 1 previous session(s) available (minimum required: 3).",
+      "data_note": "SYNTHETIC \u2014 NOT clinical data",
+      "disclaimer": "PROTOTYPE ONLY \u2014 NOT a medical diagnostic system. This module analyzes gameplay behavior and highlights behavioral changes for evaluator support. It does not diagnose dementia or any medical condition. All values are computed from synthetic demonstration data.",
+      "generated_at": "2026-09-16T05:40:10Z"
+    }
+  ]
+}
